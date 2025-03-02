@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soham De</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <button class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-links">
+                <a href="/" >Home</a>
+                <a href="/research" >Research</a>
+                <a href="/blog" >Blog</a>
+                <a href="/misc" >Miscellaneous</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        
+
+        <div class="post">
+    <h2>Understanding X's Community Notes</h2>
+    <div class="post-meta">March 14, 2024</div>
+    
+    <div class="post-content">
+        <h2 id="what-are-community-notes">What are Community Notes?</h2>
+
+<p>Community Notes (formerly known as Birdwatch) is X’s crowd-sourced fact-checking system that allows contributors to add helpful context to potentially misleading posts. The system uses a novel bridging-based ranking algorithm to identify notes that people from different perspectives find helpful.</p>
+
+<h2 id="how-does-it-work">How does it work?</h2>
+
+<p>At a high level, Community Notes works in three main steps:</p>
+
+<ol>
+  <li><strong>Note Writing</strong>: Contributors write notes providing context on posts they believe could be misleading</li>
+  <li><strong>Note Rating</strong>: Other contributors rate these notes on helpfulness</li>
+  <li><strong>Algorithmic Ranking</strong>: An algorithm identifies which notes are helpful to people across different viewpoints</li>
+</ol>
+
+<h3 id="the-bridging-based-algorithm">The Bridging-Based Algorithm</h3>
+
+<p>The core innovation in Community Notes is its bridging-based ranking algorithm. Here’s how it works:</p>
+
+<h4 id="1-creating-the-rating-network">1. Creating the Rating Network</h4>
+
+<p>First, the system creates a network based on how contributors rate notes:</p>
+<ul>
+  <li>Each contributor is a node in the network</li>
+  <li>Edges are created between contributors who tend to agree in their note ratings</li>
+  <li>The strength of edges depends on rating similarity</li>
+</ul>
+
+<h4 id="2-identifying-perspectives">2. Identifying Perspectives</h4>
+
+<p>The algorithm then:</p>
+<ul>
+  <li>Uses network clustering to identify groups of contributors with similar rating patterns</li>
+  <li>These groups often correspond to different perspectives or viewpoints on issues</li>
+  <li>The goal is to find notes that bridge across these different groups</li>
+</ul>
+
+<h4 id="3-scoring-notes">3. Scoring Notes</h4>
+
+<p>A note’s final status depends on:</p>
+<ul>
+  <li>Getting high helpfulness ratings overall</li>
+  <li>Crucially, getting high ratings from contributors across different clusters</li>
+  <li>Meeting certain rating thresholds within a time window</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simplified pseudocode for note scoring
+</span><span class="k">def</span> <span class="nf">score_note</span><span class="p">(</span><span class="n">note</span><span class="p">,</span> <span class="n">ratings</span><span class="p">,</span> <span class="n">contributor_clusters</span><span class="p">):</span>
+    <span class="n">scores_by_cluster</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">contributor_clusters</span><span class="p">:</span>
+        <span class="n">cluster_ratings</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ratings</span> <span class="k">if</span> <span class="n">r</span><span class="p">.</span><span class="n">rater</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">]</span>
+        <span class="n">scores_by_cluster</span><span class="p">[</span><span class="n">cluster</span><span class="p">]</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">cluster_ratings</span><span class="p">)</span>
+    
+    <span class="c1"># Note needs high scores across clusters
+</span>    <span class="n">bridging_score</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">scores_by_cluster</span><span class="p">.</span><span class="nf">values</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">bridging_score</span>
+</code></pre></div></div>
+
+<h2 id="why-is-this-approach-effective">Why is this approach effective?</h2>
+
+<p>The bridging-based approach has several key advantages:</p>
+
+<ol>
+  <li>
+    <p><strong>Reduces Polarization</strong>: By requiring agreement across perspectives, it helps surface notes that are broadly credible rather than just popular within one group</p>
+  </li>
+  <li>
+    <p><strong>Resists Gaming</strong>: Makes it harder for coordinated groups to manipulate the system since they need broad consensus</p>
+  </li>
+  <li>
+    <p><strong>Promotes Better Notes</strong>: Incentivizes contributors to write notes that are factual and neutrally worded to appeal across perspectives</p>
+  </li>
+</ol>
+
+<h2 id="current-challenges--future-work">Current Challenges &amp; Future Work</h2>
+
+<p>While Community Notes has shown promise, some open challenges include:</p>
+
+<ul>
+  <li>Scaling to more languages and regions</li>
+  <li>Handling rapidly evolving situations</li>
+  <li>Balancing speed vs accuracy</li>
+  <li>Preventing harassment of contributors</li>
+</ul>
+
+<h2 id="learn-more">Learn More</h2>
+
+<p>For a deeper technical dive, check out:</p>
+<ul>
+  <li><a href="https://twitter.github.io/communitynotes/">The Community Notes Guide</a></li>
+  <li>Our recent <a href="https://arxiv.org/pdf/2411.06116">paper on Supernotes</a></li>
+  <li>X’s <a href="https://help.twitter.com/en/using-x/community-notes">official documentation</a></li>
+</ul>
+
+<p><em>Last updated: March 14, 2024</em></p>
+
+    </div>
+</div> 
+
+        <footer class="footer">
+            <div class="footer-content">
+                <span>Soham De</span>
+                <span>sohamde[at]uw.edu</span>
+                <div class="social-links">
+                    <a href="https://bsky.app/profile/yourusername" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="https://twitter.com/yourusername" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/yourusername" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=XXXXXXXXXXXX" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Show/hide name in navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nav-name');
+            if (window.scrollY > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        });
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+
+    <script src="/assets/js/research.js"></script>
+    <script src="/assets/js/people.js"></script>
+    <script src="/assets/js/misc.js"></script>
+</body>
+</html> 

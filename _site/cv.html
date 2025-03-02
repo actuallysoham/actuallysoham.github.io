@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soham De</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <button class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-links">
+                <a href="/" >Home</a>
+                <a href="/research" >Research</a>
+                <a href="/blog" >Blog</a>
+                <a href="/misc" >Miscellaneous</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        
+
+        <h2 id="vitæ-full-cv">Vitæ <a href="/cv.pdf" class="view-all">Full CV</a></h2>
+
+<h2 id="experience">Experience</h2>
+
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-content">
+            <div class="timeline-title">Meta FAIR</div>
+            <div class="timeline-subtitle">Research Scientist Intern</div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">2023 - Present</div>
+        <div class="timeline-content">
+            <div class="timeline-title">University of Washington</div>
+            <div class="timeline-subtitle">PhD Student</div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">2022</div>
+        <div class="timeline-content">
+            <div class="timeline-title">Microsoft Research</div>
+            <div class="timeline-subtitle">Research Intern</div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">2021 - 2022</div>
+        <div class="timeline-content">
+            <div class="timeline-title">University of Michigan</div>
+            <div class="timeline-subtitle">Research Intern</div>
+        </div>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-date">2019 - 2023</div>
+        <div class="timeline-content">
+            <div class="timeline-title">Ashoka University</div>
+            <div class="timeline-subtitle">Undergraduate Student</div>
+        </div>
+    </div>
+</div>
+
+
+        <footer class="footer">
+            <div class="footer-content">
+                <span>Soham De</span>
+                <span>sohamde[at]uw.edu</span>
+                <div class="social-links">
+                    <a href="https://bsky.app/profile/yourusername" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="https://twitter.com/yourusername" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/yourusername" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=XXXXXXXXXXXX" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Show/hide name in navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nav-name');
+            if (window.scrollY > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        });
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+
+    <script src="/assets/js/research.js"></script>
+    <script src="/assets/js/people.js"></script>
+    <script src="/assets/js/misc.js"></script>
+</body>
+</html> 

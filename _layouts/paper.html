@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="paper-page">
+    <div class="paper-header">
+        <img src="{{ page.thumbnail }}" alt="Header image for {{ page.title }}" class="paper-hero-image">
+        <h1>{{ page.title }}</h1>
+        <p class="authors">{{ page.authors | join: ", " }}</p>
+        <p class="venue"><em>{{ page.venue }}. {{ page.year }}</em></p>
+    </div>
+
+    <div class="paper-links">
+        {% if page.links.paper %}<a href="{{ page.links.paper }}" class="button">Paper</a>{% endif %}
+        {% if page.links.code %}<a href="{{ page.links.code }}" class="button">Code</a>{% endif %}
+    </div>
+
+    <div class="paper-content">
+        <h2>Abstract</h2>
+        <p>{{ page.abstract }}</p>
+
+        {{ content }}
+    </div>
+</div> 

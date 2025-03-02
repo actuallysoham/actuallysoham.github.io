@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-01T16:22:33-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Soham De</title><subtitle>PhD student at University of Washington</subtitle><entry><title type="html">Understanding X’s Community Notes</title><link href="http://localhost:4000/2024/03/14/community-notes.html" rel="alternate" type="text/html" title="Understanding X’s Community Notes" /><published>2024-03-14T00:00:00-07:00</published><updated>2024-03-14T00:00:00-07:00</updated><id>http://localhost:4000/2024/03/14/community-notes</id><content type="html" xml:base="http://localhost:4000/2024/03/14/community-notes.html"><![CDATA[<h2 id="what-are-community-notes">What are Community Notes?</h2>
+
+<p>Community Notes (formerly known as Birdwatch) is X’s crowd-sourced fact-checking system that allows contributors to add helpful context to potentially misleading posts. The system uses a novel bridging-based ranking algorithm to identify notes that people from different perspectives find helpful.</p>
+
+<h2 id="how-does-it-work">How does it work?</h2>
+
+<p>At a high level, Community Notes works in three main steps:</p>
+
+<ol>
+  <li><strong>Note Writing</strong>: Contributors write notes providing context on posts they believe could be misleading</li>
+  <li><strong>Note Rating</strong>: Other contributors rate these notes on helpfulness</li>
+  <li><strong>Algorithmic Ranking</strong>: An algorithm identifies which notes are helpful to people across different viewpoints</li>
+</ol>
+
+<h3 id="the-bridging-based-algorithm">The Bridging-Based Algorithm</h3>
+
+<p>The core innovation in Community Notes is its bridging-based ranking algorithm. Here’s how it works:</p>
+
+<h4 id="1-creating-the-rating-network">1. Creating the Rating Network</h4>
+
+<p>First, the system creates a network based on how contributors rate notes:</p>
+<ul>
+  <li>Each contributor is a node in the network</li>
+  <li>Edges are created between contributors who tend to agree in their note ratings</li>
+  <li>The strength of edges depends on rating similarity</li>
+</ul>
+
+<h4 id="2-identifying-perspectives">2. Identifying Perspectives</h4>
+
+<p>The algorithm then:</p>
+<ul>
+  <li>Uses network clustering to identify groups of contributors with similar rating patterns</li>
+  <li>These groups often correspond to different perspectives or viewpoints on issues</li>
+  <li>The goal is to find notes that bridge across these different groups</li>
+</ul>
+
+<h4 id="3-scoring-notes">3. Scoring Notes</h4>
+
+<p>A note’s final status depends on:</p>
+<ul>
+  <li>Getting high helpfulness ratings overall</li>
+  <li>Crucially, getting high ratings from contributors across different clusters</li>
+  <li>Meeting certain rating thresholds within a time window</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simplified pseudocode for note scoring
+</span><span class="k">def</span> <span class="nf">score_note</span><span class="p">(</span><span class="n">note</span><span class="p">,</span> <span class="n">ratings</span><span class="p">,</span> <span class="n">contributor_clusters</span><span class="p">):</span>
+    <span class="n">scores_by_cluster</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">contributor_clusters</span><span class="p">:</span>
+        <span class="n">cluster_ratings</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ratings</span> <span class="k">if</span> <span class="n">r</span><span class="p">.</span><span class="n">rater</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">]</span>
+        <span class="n">scores_by_cluster</span><span class="p">[</span><span class="n">cluster</span><span class="p">]</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">cluster_ratings</span><span class="p">)</span>
+    
+    <span class="c1"># Note needs high scores across clusters
+</span>    <span class="n">bridging_score</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">scores_by_cluster</span><span class="p">.</span><span class="nf">values</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">bridging_score</span>
+</code></pre></div></div>
+
+<h2 id="why-is-this-approach-effective">Why is this approach effective?</h2>
+
+<p>The bridging-based approach has several key advantages:</p>
+
+<ol>
+  <li>
+    <p><strong>Reduces Polarization</strong>: By requiring agreement across perspectives, it helps surface notes that are broadly credible rather than just popular within one group</p>
+  </li>
+  <li>
+    <p><strong>Resists Gaming</strong>: Makes it harder for coordinated groups to manipulate the system since they need broad consensus</p>
+  </li>
+  <li>
+    <p><strong>Promotes Better Notes</strong>: Incentivizes contributors to write notes that are factual and neutrally worded to appeal across perspectives</p>
+  </li>
+</ol>
+
+<h2 id="current-challenges--future-work">Current Challenges &amp; Future Work</h2>
+
+<p>While Community Notes has shown promise, some open challenges include:</p>
+
+<ul>
+  <li>Scaling to more languages and regions</li>
+  <li>Handling rapidly evolving situations</li>
+  <li>Balancing speed vs accuracy</li>
+  <li>Preventing harassment of contributors</li>
+</ul>
+
+<h2 id="learn-more">Learn More</h2>
+
+<p>For a deeper technical dive, check out:</p>
+<ul>
+  <li><a href="https://twitter.github.io/communitynotes/">The Community Notes Guide</a></li>
+  <li>Our recent <a href="https://arxiv.org/pdf/2411.06116">paper on Supernotes</a></li>
+  <li>X’s <a href="https://help.twitter.com/en/using-x/community-notes">official documentation</a></li>
+</ul>
+
+<p><em>Last updated: March 14, 2024</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[A technical deep-dive into how Community Notes works to identify helpful context on social media posts]]></summary></entry><entry><title type="html">My Experience with CS/IS PhD Applications</title><link href="http://localhost:4000/2023/07/31/phd-advice.html" rel="alternate" type="text/html" title="My Experience with CS/IS PhD Applications" /><published>2023-07-31T00:00:00-07:00</published><updated>2023-07-31T00:00:00-07:00</updated><id>http://localhost:4000/2023/07/31/phd-advice</id><content type="html" xml:base="http://localhost:4000/2023/07/31/phd-advice.html"><![CDATA[<h2 id="what-is-this">What is this?</h2>
+
+<p>I applied to PhD programs in Information Science, Computer Science, Communication, HCI (and other related fields) in 2022 (for the Fall 2023 intake cycle) while finishing my undergraduate degree in Computer Science. While I was successful in my first attempt (got into 50% of the programs I applied to), I’ve made my fair share of mistakes and inefficiencies which I believe are worth learning from.</p>
+
+<p>This document is a recollection of my experiences, framed as advice. It primarily covers aspects directly related to the application process for PhD programs in IS/HCI in the US and Europe. The exact process may vary significantly across institutes and disciplines, and is not the focus of this article.</p>
+
+<blockquote>
+  <p>As with most advice, these are born of my subjective experiences and therefore, take these with a pinch of salt!</p>
+</blockquote>
+
+<p><strong>Disclaimer</strong>: Deadlines, processes etc are bound to change, please do not treat any information here as official - always refer to institute websites and/or other official sources for the latest information.</p>
+
+<h3 id="acknowledgements">Acknowledgements</h3>
+
+<p>Much of the advice here is what I had received when I was applying, from my peers, professors and seniors. In particular, I borrow generously from what Dhruv Agarwal told me when I was applying. I have also tried to link any other resource I found helpful, wherever applicable.</p>
+
+<h2 id="timeline">Timeline</h2>
+
+<p>The PhD application process can be broken down into 4 (potentially overlapping) phases:</p>
+
+<ol>
+  <li><strong>Pre-Application</strong> (September and before)</li>
+  <li><strong>Application Prep</strong> (September - November)</li>
+  <li><strong>Applications</strong> (November - January)</li>
+  <li><strong>Interviews, Visits, Decisions</strong> (January - March)</li>
+</ol>
+
+<h3 id="pre-application-phase">Pre-Application Phase</h3>
+
+<p>This is when you build your research profile and figure out if a PhD is right for you. Key activities include:</p>
+
+<h4 id="build-your-research-portfolio">Build your research portfolio:</h4>
+
+<ul>
+  <li>
+    <p><strong>Journal/Conference Publications</strong>: While a PhD is supposed to train you in independent research, it is (perhaps unfortunately) common for strong applications to have several publications (often, at top international venues) before starting their PhD. While this is rarely a strict requirement, even a single first-authored academic publication at a good venue is likely to be a highlight and will go a long way in strengthening your applications.</p>
+  </li>
+  <li>
+    <p><strong>Other demonstrations of research experiences</strong>: Having access to research support and good mentorship prior to your PhD is often a matter of privilege and not available to all. Hence, if you are unable to get a publication pre-application, do try to demonstrate evidence of your research experience and potential via other means, such as independent projects, posters, reports, articles etc.</p>
+  </li>
+  <li>
+    <p><strong>Expand your collaboration networks</strong>: Ask yourself if you have enough (typically 3, of which 2 should be professors/researchers) senior, experienced collaborators or mentors, who can write you a strong letter of recommendation. If not yet, then actively seek opportunities to collaborate with more people/ join a new research lab etc. Do this early - collaborations take time, especially if you want it to result in good recommendations.</p>
+  </li>
+</ul>
+
+<h4 id="answer-the-tough-questions">Answer the tough questions:</h4>
+
+<ul>
+  <li><strong>Why a PhD?</strong> Have this answer handy - you’ll need this when you write your SOP and every time you question your life-decisions.
+    <ul>
+      <li>Casey Fiesler’s YouTube video illustrates good and bad reasons to pursue a PhD</li>
+      <li>Matt Might’s Illustrated Guide paints a simple, yet accurate portrait of a PhD program</li>
+    </ul>
+  </li>
+  <li><strong>What kind of researcher do you want to be?</strong> Hopefully by now, you vaguely know what you’re interested in. Once that’s decided, consider what methods you’re interested in. Figure out the top publishing venues in your field, and the collaboration networks within your academic community. This will often help you narrow your search for advisors and institutes.</li>
+</ul>
+
+<h4 id="academic-website">Academic website</h4>
+<p>Make a basic website if you do not have one, and keep it updated. Have your research publications, reports, projects etc and your contact information easily available. I cannot stress how important this is - I have received several emails and offers from potential advisors at top institutes through my website.</p>
+
+<ul>
+  <li>I personally use the al-folio template, which I have modified to suit my needs</li>
+  <li>Some other academic websites I really like are Pascal Michaillat’s website and Martin Saveski’s website</li>
+</ul>
+
+<h4 id="greieltstoefl">GRE/IELTS/TOEFL</h4>
+<ul>
+  <li>Most (not all) PhD programs I applied to waived the GRE requirement. Some may waive IELTS/TOEFL requirements as well. Check these once before you start preparing.</li>
+  <li>A great test score probably won’t drastically improve your odds, but a bad score might hurt them - my advice here would be to not unnecessarily stress yourself out to chase a perfect score.</li>
+  <li>Make sure you attempt the tests and order the scores in time for the application deadlines (some have separate deadlines for test scores). Also be prepared to pay money (lots of it).</li>
+</ul>
+
+<h3 id="application-preparation-phase">Application Preparation Phase</h3>
+
+<p>Around September is when you should ideally have a list of programs that you are interested in. Here’s how I would rank application components in decreasing order of importance:</p>
+
+<ol>
+  <li>Research Experience</li>
+  <li>Letters of Recommendation</li>
+  <li>Statement of Purpose</li>
+  <li>CV/Resume</li>
+  <li>Transcript</li>
+  <li>GPA</li>
+  <li>GRE/TOEFL/IELTS</li>
+</ol>
+
+<h4 id="program-shortlisting">Program Shortlisting</h4>
+<p>A lot goes into deciding suitable programs. Your priorities may differ from mine, so I’ll refrain from sharing strong advice here. Things that were important to me were:</p>
+
+<ul>
+  <li>Research group/faculty alignment with my interests</li>
+  <li>Relevant labs</li>
+  <li>Overall institute reputation</li>
+  <li>Location</li>
+</ul>
+
+<p>Be realistic about your chances (acceptance rates are often in single digits at top institutes) and apply as broadly as you can (I applied to 10-15 places across US and Europe).</p>
+
+<p>Some useful (CS-centric) resources:</p>
+<ul>
+  <li>CS Rankings attempts to objectively rank institutes by faculty publication counts</li>
+  <li>CS Stipend Rankings compares PhD stipends against cost of living</li>
+  <li>Vijay Chidambaram’s blog lists several other factors to consider</li>
+</ul>
+
+<h4 id="application-tracking-system">Application Tracking System</h4>
+<p>Maintain a list of updated deadlines, requirements etc for each program. I maintained a Google Sheet tracking all applications. Be careful while copying information - sometimes programs may have different deadlines for different programs, early decisions etc (I messed up at least 2 different applications because of poor progress tracking).</p>
+
+<h4 id="reaching-out">Reaching out</h4>
+<p>There is mixed advice on whether you should reach out to potential advisors before your PhD applications. Here’s what I did:</p>
+
+<ul>
+  <li>Attend conferences, especially ones that come before PhD deadlines (i.e from August - late November); be a Student Volunteer (for example: SV in CSCW). Talk to faculty as well as PhD students.</li>
+  <li>Ask your advisor to introduce you to faculty within their collaboration circles</li>
+  <li>Professors are usually very busy - make sure your meeting is worth their time. Be familiar with their area of research and contact instructions on websites</li>
+</ul>
+
+<h4 id="statement-of-purpose">Statement of Purpose</h4>
+<p>My advisor told me that my SOP was the weakest part of my application. Instead of giving advice, here are some resources I found useful:</p>
+
+<ul>
+  <li>CS-SOPs is a repository of several SOPs from successful PhD applicants</li>
+  <li>Good advice from Swapneel Mehta, Nathan Schneider, and MIT EECS</li>
+</ul>
+
+<h4 id="letters-of-recommendation">Letters of Recommendation</h4>
+
+<ul>
+  <li>Be strategic about choosing letter writers - an ideal recommender would be a senior professor/researcher, well-regarded in their field, whom you have had extensive work history with</li>
+  <li>Give your letter-writers at least a month’s notice, and if given a choice, always opt to waive the right to view your letters</li>
+  <li>Some great advice exists from various faculty, including Michael Ernst, Matt Might and Manu Awasthi</li>
+</ul>
+
+<h3 id="application-phase">Application Phase</h3>
+
+<h4 id="clear-your-schedule">Clear your schedule</h4>
+<ul>
+  <li>December 1, December 15 and other dates may have several deadlines. Do not underestimate the time it requires to fine-tune your SOP</li>
+  <li>Pre-fill applications with basic demographic details, as much as possible</li>
+</ul>
+
+<h4 id="ensure-sufficient-credit-limit">Ensure sufficient credit limit</h4>
+<ul>
+  <li>Unfortunately, application fees can be a significant financial burden. Most applications fees will be around $100 − $150</li>
+  <li>Ensure that your credit card has sufficient balance</li>
+</ul>
+
+<h4 id="follow-up-on-lors-and-test-scores">Follow up on LORs and test scores</h4>
+<ul>
+  <li>Often, the LORs have separate deadlines - confirm this and ensure that they are received on time</li>
+  <li>Test scores require a few days/weeks to be sent - keep this into account and request these scores well in advance</li>
+</ul>
+
+<h3 id="post-application-phase">Post-Application Phase</h3>
+
+<h4 id="interviews">Interviews</h4>
+<ul>
+  <li>A subset of applicants will get interview calls - typically over Zoom/Google Meet</li>
+  <li>Once you get an interview call, you must go over your past projects to ensure you are able to speak about them</li>
+  <li>Common interview questions include:
+    <ul>
+      <li>Describe your best research project</li>
+      <li>Why PhD?</li>
+      <li>Why this program and institute?</li>
+      <li>Strengths and weaknesses</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="phd-visit">PhD Visit</h4>
+<ul>
+  <li>If you’re authorized to travel to the US, do consider attending in-person PhD visit days</li>
+  <li>Meet your potential future-colleagues during these visit days</li>
+  <li>I found Andrew Kuznetsov’s guide on asking questions very helpful during this time</li>
+</ul>
+
+<h4 id="dealing-with-rejections">Dealing with rejections</h4>
+<ul>
+  <li>Always remember that PhD admissions are not a perfect or fair process</li>
+  <li>I received offers from ‘dream’ programs, and rejections from ‘safety’ programs</li>
+  <li>Rejections are often the norm rather than an exception in academia</li>
+</ul>
+
+<h2 id="faqs">FAQs</h2>
+
+<p><strong>Q: Can I ask my research advisor, who is also a potential PhD advisor, to write me a recommendation letter?</strong></p>
+
+<p>Usually, there aren’t any institution-level restrictions against this. If your advisor has worked with you and is willing to write one, it should be fine.</p>
+
+<p><strong>Q: How do I contact potential advisors?</strong></p>
+
+<p>I will start with referring to Matt Might’s email policy. My style has always been to reach out to PhD students first, and ask them to make an introduction to their advisors. If you have to cold email, read at least a few papers of the person you’re reaching out to and demonstrate a clear understanding of their research interests.</p>
+
+<p><strong>Q: I do not have publications yet, how bad is it?</strong></p>
+
+<p>It definitely isn’t (shouldn’t be) a deal-breaker in most cases. However, from my experience, most successful applicants do tend to have 1-2 peer-reviewed publications at international venues. If you have a manuscript under review, you may want to include that in additional writing samples.</p>
+
+<p><strong>Q: Should I do a Masters before a PhD?</strong></p>
+
+<p>This boils down to your reasons for doing a PhD in the first place. I wanted to pursue a career in research - I chose not to do a Masters first because I couldn’t find a program that would justify the tuition cost, or the opportunity cost in time for me.</p>
+
+<h2 id="useful-resources">Useful Resources</h2>
+
+<ul>
+  <li>Sriram Krishnamurthy’s comprehensive <a href="https://www.youtube.com/watch?v=z2A8Gzh6_GQ">2-hour long YouTube video</a></li>
+  <li>Casey Fiesler’s <a href="https://www.youtube.com/@CaseyFiesler">YouTube Channel</a></li>
+  <li>Nelson Liu’s <a href="https://blog.nelsonliu.me/2019/10/24/student-perspectives-on-applying-to-nlp-phd-programs/">Student Perspectives on NLP PHD applications</a></li>
+  <li>Maria Antoniak’s <a href="https://maria-antoniak.github.io/2020/11/27/phd-applications.html">blog</a></li>
+  <li>Mor Harchol-Balter’s <a href="https://www.cs.cmu.edu/~harchol/gradschooltalk.pdf">Guide to PhD in CS</a></li>
+  <li>John Hewitt’s <a href="https://nlp.stanford.edu/~johnhew/undergrad-researchers.html">advice for undergraduates</a></li>
+  <li>Swapneel Mehta’s <a href="https://swapneelm.github.io/posts/2020/12/blog-post-4/">SOP Guide</a></li>
+</ul>
+
+<p><em>Last updated: July 31, 2023</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[A comprehensive guide to PhD applications in Computer Science and Information Science, based on personal experience]]></summary></entry></feed>

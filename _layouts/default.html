@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <button class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-links">
+                <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a>
+                <a href="/research" {% if page.url contains "research" %}class="active"{% endif %}>Research</a>
+                <a href="/blog" {% if page.url contains "blog" %}class="active"{% endif %}>Blog</a>
+                <a href="/misc" {% if page.url contains "misc" %}class="active"{% endif %}>Miscellaneous</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        {% if page.url == "/" %}
+        <div class="header">
+            <img src="/assets/images/profile.jpg" alt="{{ site.title }}" class="profile-img">
+            <div class="header-content">
+                <h1>
+                    <span class="first-name">Soham De</span> 
+                </h1>
+                <p>PhD student at <a href="https://www.washington.edu">UW</a></p>
+                <p>sohamde[AT]uw.edu</p>
+                <div class="social-links">
+                    <a href="https://bsky.app/profile/{{ site.bluesky_username }}" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="https://twitter.com/{{ site.twitter_username }}" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/{{ site.github_username }}" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user={{ site.scholar_username }}" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+                    <a href="/cv" class="link-button social-cv">View CV</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {{ content }}
+
+        <footer class="footer">
+            <div class="footer-content">
+                <span>Soham De</span>
+                <span>sohamde[at]uw.edu</span>
+                <div class="social-links">
+                    <a href="https://bsky.app/profile/{{ site.bluesky_username }}" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="https://twitter.com/{{ site.twitter_username }}" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/{{ site.github_username }}" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user={{ site.scholar_username }}" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Show/hide name in navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nav-name');
+            if (window.scrollY > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        });
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+
+    <script src="/assets/js/research.js"></script>
+    <script src="/assets/js/people.js"></script>
+    <script src="/assets/js/misc.js"></script>
+</body>
+</html> 

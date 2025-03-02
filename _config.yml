@@ -1,0 +1,22 @@
+title: Soham De
+description: PhD student at University of Washington
+previous: Microsft Research, Ashoka University
+email: your.email@example.com
+twitter_username: yourusername
+github_username: yourusername
+linkedin_username: yourusername
+bluesky_username: yourusername
+scholar_username: XXXXXXXXXXXX
+blog_url: https://yourblog.com
+contact_url: superdm.com/yourusername
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+collections:
+  papers:
+    output: true
+    permalink: /papers/:path/ 
