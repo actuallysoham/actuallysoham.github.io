@@ -11,7 +11,7 @@
   thumbnail: "/assets/images/papers/supernotes-thumb.png"
   abstract: "X's Community Notes, a crowd-sourced fact-checking system, allows users to annotate potentially misleading posts..."  # Truncated for brevity
   links:
-    abstract: "https://arxiv.org/pdf/2411.06116"
+    abstract: "https://arxiv.org/abs/2411.06116"
     paper: "https://arxiv.org/pdf/2411.06116"
     code: "https://github.com/Saveski-Lab/supernotes"
   bibtex: |
@@ -39,7 +39,6 @@
   abstract: "The algorithm detects civic content that doesn't attract diverse engagement (not 'bridging') and replaces it with similar content that is expected to be more bridging, hopefully reducing divisiveness without decreasing civic content."
   links:
     abstract: "https://rankingchallenge.substack.com/p/announcing-the-finalists-of-the-prosocial"
-    paper: "https://rankingchallenge.substack.com/p/announcing-the-finalists-of-the-prosocial"
   award: "Winning Intervention (Top 3)"
   bibtex: |
     @article{thorburn2024feedspan,
@@ -60,8 +59,8 @@
   thumbnail: "/assets/images/papers/supernotes-thumb.png"
   abstract: "One of the main limitations of Community Notes—Twitter's crowd-sourced fact-checking system..."  # Truncated for brevity
   links:
-    abstract: "../pdf/cnllm_ic2s2.pdf"
-    paper: "../pdf/cnllm_ic2s2.pdf"
+    abstract: "/assets/pdf/cnllm_ic2s2.pdf"
+    paper: "/assets/pdf/cnllm_ic2s2.pdf"
 
 - title: "Networks and Influencers in Online Propaganda Events: A Comparative Study of Three Cases in India"
   type: "paper"
@@ -75,9 +74,8 @@
   thumbnail: "/assets/images/papers/networks-thumb.png"
   abstract: "The structure and mechanics of organized outreach around certain issues, such as in propaganda networks, is constantly evolving on social media..."
   links:
-    abstract: "../papers/cscw_networks.pdf"
-    paper: "../papers/cscw_networks.pdf"
-    html: "https://dl.acm.org/doi/10.1145/3653709"
+    abstract: "https://dl.acm.org/doi/10.1145/3653709"
+    paper: "/assets/pdf/cscw_networks.pdf"
 
 - title: "On the Influence and Political Leaning of Overlap between Propaganda Communities"
   type: "paper"
@@ -92,12 +90,11 @@
   thumbnail: "/assets/images/papers/compass22.png"
   abstract: "Social media offers increasingly diverse mechanisms for the distribution of motivated information..."
   links:
-    abstract: "../papers/compass24_influence.pdf"
-    paper: "../papers/compass24_influence.pdf"
-    html: "https://dl.acm.org/doi/10.1145/3640790"
+    abstract: "https://dl.acm.org/doi/10.1145/3640790"
+    paper: "/assets/pdf/compass24_influence.pdf"
 
 - title: "Social Media and Society in India"
-  type: "media"
+  type: "paper"
   authors:
     - "Soham De"
     - "Arshia Arya"
@@ -109,9 +106,8 @@
   thumbnail: "/assets/images/papers/um_long.png"
   abstract: "The dramatic increase in access to social media in the last decade in India has brought significant changes..."
   links:
-    abstract: "../papers/smsi2023.pdf"
-    paper: "../papers/smsi2023.pdf"
-    html: "https://dx.doi.org/10.7302/7881"
+    abstract: "https://dx.doi.org/10.7302/7881"
+    paper: "/assets/pdf/smsi2023.pdf"
 
 - title: "Sustaining Discourse in a Rumour Network on Twitter"
   type: "poster"
@@ -124,8 +120,7 @@
   thumbnail: "/assets/images/papers/ssr-thumb.png"
   abstract: "Social media has evolved to be an effective means for individuals to stay relevant and garner a profitable followership online..."
   links:
-    abstract: "../papers/ic2s2_ssr.pdf"
-    paper: "../papers/ic2s2_ssr.pdf"
+    paper: "/assets/pdf/ic2s2_ssr.pdf"
 
 - title: "Poster: Experiences of Journalists on Twitter in India"
   type: "poster"
@@ -157,9 +152,8 @@
   equal_contribution: true
   abstract: "Influencers play a crucial role in shaping public narratives through information creation and diffusion in the Global South..."
   links:
-    abstract: "../papers/ictd22_closed_ranks.pdf"
-    paper: "../papers/ictd22_closed_ranks.pdf"
-    html: "https://arxiv.org/abs/2204.03098"
+    abstract: "https://dl.acm.org/doi/10.1145/3572334.3572395"
+    paper: "/assets/pdf/ictd22_closed_ranks.pdf"
 
 - title: "DISMISS: Database of Indian Social Media Influencers on Twitter"
   type: "paper"
@@ -186,8 +180,8 @@
   equal_contribution: true
   abstract: "Databases of highly networked individuals have been indispensable in studying narratives and influence on social media..."
   links:
-    abstract: "../papers/icwsm22_dismiss.pdf"
-    paper: "../papers/icwsm22_dismiss.pdf"
+    abstract: "https://ojs.aaai.org/index.php/ICWSM/article/view/19370"
+    paper: "/assets/pdf/icwsm22_dismiss.pdf"
     dataset: "https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/BPY2JY"
 
 # Media coverage

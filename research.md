@@ -101,4 +101,35 @@ Most recent publications on <a href="#">Google Scholar</a>. <br/>
         </div>
         {% endfor %}
     </div>
+</div>
+
+## Media Coverage
+
+<div class="publications-list">
+    {% assign media = site.data.publications | where: "type", "media" | sort: "year" | reverse %}
+    {% for item in media %}
+    <div class="publication">
+        <div class="pub-thumbnail">
+            <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
+        </div>
+        <div class="pub-content">
+            <h3>{{ item.title }}</h3>
+            <p class="authors">
+                {% for author in item.authors %}
+                    {%- if forloop.last %} and {% endif %}
+                    {%- if author == "Soham De" -%}
+                        <strong>{{ author }}</strong>
+                    {%- else -%}
+                        {{ author }}
+                    {%- endif -%}
+                    {%- unless forloop.last %}, {% endunless %}
+                {%- endfor %}
+            </p>
+            <p class="venue"><em>{{ item.venue }}. {{ item.year }}</em></p>
+            <div class="pub-links">
+                {% if item.links.html %}<a href="{{ item.links.html }}">Read Article</a>{% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div> 
