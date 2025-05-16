@@ -12,7 +12,7 @@
   abstract: "X's Community Notes, a crowd-sourced fact-checking system, allows users to annotate potentially misleading posts..."  # Truncated for brevity
   links:
     abstract: "https://arxiv.org/abs/2411.06116"
-    paper: "https://arxiv.org/pdf/2411.06116"
+    paper: "https://doi.org/10.1145/3696410.3714934"
     code: "https://github.com/Saveski-Lab/supernotes"
   bibtex: |
     @inproceedings{de2025supernotes,

@@ -28,54 +28,29 @@
     <div class="content">
         
 
-        <h2 id="news">News</h2>
+        <div class="post">
+    <h2>Skydiving into Community Notes</h2>
+    <div class="post-meta">April 24, 2025</div>
+    
+    <div class="post-content">
+        <p>By now, I’ve spend almost 2 years studying Birdwatch/Community Notes. It strikes my academic curiosity for a few reasons (a) the algorithmic elegance and (b) the real-world success. But the goal of this blogpost is different. Here I want to present a starters’ guide to anyone who is interested in learning more about the algorithm – and the goal for me is that this should be useful for people who have no idea about the algorithm, as well as for someone very familiar with the algorithm, but not super familiar with the implementation. So, in the first part, I’ll dive deep into the algorithm. In the second part, I’ll present my understand of how the algorithm is actually implemented, referencing the official github repo, and how you can play around with it on your own to investigate further.</p>
 
-<div class="news-list">
-    
-        <div class="news-item">
-            <div class="news-date">2025-04-26</div>
-            <div class="news-content"><p>Heading to Sydney, AUS to present the Supernotes paper at WWW’25. Come say hi!</p>
-</div>
-        </div>
-    
-        <div class="news-item">
-            <div class="news-date">2025-04-05</div>
-            <div class="news-content"><p>In UMSI, organising the 5th International conference on Social Media and Society in India. This is my 4th year of involvement with this conference.</p>
-</div>
-        </div>
-    
-        <div class="news-item">
-            <div class="news-date">2025-11-15</div>
-            <div class="news-content"><p>In Costa Rica attending CSCW. I’m student volunteering and also presenting a paper!</p>
-</div>
-        </div>
-    
-        <div class="news-item">
-            <div class="news-date">2024-10-25</div>
-            <div class="news-content"><p>We were selected as 1 of the 3 winning interventions in the Prosocial Ranking Challenge. Experiment is currently underway - stay tuned for an interesting paper!</p>
-</div>
-        </div>
-    
-        <div class="news-item">
-            <div class="news-date">2024-07-05</div>
-            <div class="news-content"><p>Heading to Philadephia to present our work at IC2S2 2024.</p>
-</div>
-        </div>
-    
-        <div class="news-item">
-            <div class="news-date">2023-07-05</div>
-            <div class="news-content"><p>I’ve documented by experience applying to CS/IS PhD programs in this blog. Check it out and let me know if you find it helpful!</p>
-</div>
-        </div>
-    
-        <div class="news-item">
-            <div class="news-date">2023-06-15</div>
-            <div class="news-content"><p>I’m finally happy to share that I’ll be joining the PhD program at UW (iSchool) this Fall, and will be advised by Martin Saveski.</p>
-</div>
-        </div>
-    
-</div>
+<p>Ok, how is this different? I think there are already several excellent blog-posts describing the Community Notes algorithm, and I frequently refer to several of these below. However, I think very few of them are actually able to tie higher level algorithmic ideas to the low-level implementation and related nuances. Second, I also realized that my person intuition about the algorithm was not captured in any existing blogpost and my hope is that sharing that might also be useful for some people to understand it better.</p>
 
+<h2 id="the-35000-ft-view">The 35,000 ft view</h2>
+
+<p>Let’s start with the overall goals of a crowd-sourced fact-checking system and identify the big challenges that are bound to appear. A crowd-sourced fact-checking system typically has several objectives to optimise for simultaneously, such as accuracy, coverage and speed. Allowing anyone in the crowd to fact-check makes this system naturally optimized for coverage and speed, just because of the greater number of ‘fact-checkers’ available. However,</p>
+
+<p>As opposed to professional fact-checkers, the median fact-checker in a crowd-sourced system is not engaged in fact-checking full time or in a professional capacity. Very often they are not paid. On community notes, they are infact anonymous. Motivations for fact-checking are not uniform and hard to make assumptions about. This</p>
+
+<h2 id="the-8000-ft-view">The 8,000 ft view</h2>
+
+<h2 id="the-100-ft-view">The 100 ft view</h2>
+
+<p><em>Last updated: April 24, 2025</em></p>
+
+    </div>
+</div> 
 
         <footer class="footer">
             <div class="footer-content">

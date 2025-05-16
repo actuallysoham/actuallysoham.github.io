@@ -1,98 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-09T20:52:44-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Soham De</title><subtitle>PhD student at University of Washington</subtitle><entry><title type="html">Understanding X’s Community Notes</title><link href="http://localhost:4000/2024/03/14/community-notes.html" rel="alternate" type="text/html" title="Understanding X’s Community Notes" /><published>2024-03-14T00:00:00-07:00</published><updated>2024-03-14T00:00:00-07:00</updated><id>http://localhost:4000/2024/03/14/community-notes</id><content type="html" xml:base="http://localhost:4000/2024/03/14/community-notes.html"><![CDATA[<h2 id="what-are-community-notes">What are Community Notes?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-04-24T19:16:11-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Soham De</title><subtitle>PhD student at University of Washington</subtitle><entry><title type="html">Skydiving into Community Notes</title><link href="http://localhost:4000/2025/04/24/cn.html" rel="alternate" type="text/html" title="Skydiving into Community Notes" /><published>2025-04-24T00:00:00-07:00</published><updated>2025-04-24T00:00:00-07:00</updated><id>http://localhost:4000/2025/04/24/cn</id><content type="html" xml:base="http://localhost:4000/2025/04/24/cn.html"><![CDATA[<p>By now, I’ve spend almost 2 years studying Birdwatch/Community Notes. It strikes my academic curiosity for a few reasons (a) the algorithmic elegance and (b) the real-world success. But the goal of this blogpost is different. Here I want to present a starters’ guide to anyone who is interested in learning more about the algorithm – and the goal for me is that this should be useful for people who have no idea about the algorithm, as well as for someone very familiar with the algorithm, but not super familiar with the implementation. So, in the first part, I’ll dive deep into the algorithm. In the second part, I’ll present my understand of how the algorithm is actually implemented, referencing the official github repo, and how you can play around with it on your own to investigate further.</p>
 
-<p>Community Notes (formerly known as Birdwatch) is X’s crowd-sourced fact-checking system that allows contributors to add helpful context to potentially misleading posts. The system uses a novel bridging-based ranking algorithm to identify notes that people from different perspectives find helpful.</p>
+<p>Ok, how is this different? I think there are already several excellent blog-posts describing the Community Notes algorithm, and I frequently refer to several of these below. However, I think very few of them are actually able to tie higher level algorithmic ideas to the low-level implementation and related nuances. Second, I also realized that my person intuition about the algorithm was not captured in any existing blogpost and my hope is that sharing that might also be useful for some people to understand it better.</p>
 
-<h2 id="how-does-it-work">How does it work?</h2>
+<h2 id="the-35000-ft-view">The 35,000 ft view</h2>
 
-<p>At a high level, Community Notes works in three main steps:</p>
+<p>Let’s start with the overall goals of a crowd-sourced fact-checking system and identify the big challenges that are bound to appear. A crowd-sourced fact-checking system typically has several objectives to optimise for simultaneously, such as accuracy, coverage and speed. Allowing anyone in the crowd to fact-check makes this system naturally optimized for coverage and speed, just because of the greater number of ‘fact-checkers’ available. However,</p>
 
-<ol>
-  <li><strong>Note Writing</strong>: Contributors write notes providing context on posts they believe could be misleading</li>
-  <li><strong>Note Rating</strong>: Other contributors rate these notes on helpfulness</li>
-  <li><strong>Algorithmic Ranking</strong>: An algorithm identifies which notes are helpful to people across different viewpoints</li>
-</ol>
+<p>As opposed to professional fact-checkers, the median fact-checker in a crowd-sourced system is not engaged in fact-checking full time or in a professional capacity. Very often they are not paid. On community notes, they are infact anonymous. Motivations for fact-checking are not uniform and hard to make assumptions about. This</p>
 
-<h3 id="the-bridging-based-algorithm">The Bridging-Based Algorithm</h3>
+<h2 id="the-8000-ft-view">The 8,000 ft view</h2>
 
-<p>The core innovation in Community Notes is its bridging-based ranking algorithm. Here’s how it works:</p>
+<h2 id="the-100-ft-view">The 100 ft view</h2>
 
-<h4 id="1-creating-the-rating-network">1. Creating the Rating Network</h4>
-
-<p>First, the system creates a network based on how contributors rate notes:</p>
-<ul>
-  <li>Each contributor is a node in the network</li>
-  <li>Edges are created between contributors who tend to agree in their note ratings</li>
-  <li>The strength of edges depends on rating similarity</li>
-</ul>
-
-<h4 id="2-identifying-perspectives">2. Identifying Perspectives</h4>
-
-<p>The algorithm then:</p>
-<ul>
-  <li>Uses network clustering to identify groups of contributors with similar rating patterns</li>
-  <li>These groups often correspond to different perspectives or viewpoints on issues</li>
-  <li>The goal is to find notes that bridge across these different groups</li>
-</ul>
-
-<h4 id="3-scoring-notes">3. Scoring Notes</h4>
-
-<p>A note’s final status depends on:</p>
-<ul>
-  <li>Getting high helpfulness ratings overall</li>
-  <li>Crucially, getting high ratings from contributors across different clusters</li>
-  <li>Meeting certain rating thresholds within a time window</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Simplified pseudocode for note scoring
-</span><span class="k">def</span> <span class="nf">score_note</span><span class="p">(</span><span class="n">note</span><span class="p">,</span> <span class="n">ratings</span><span class="p">,</span> <span class="n">contributor_clusters</span><span class="p">):</span>
-    <span class="n">scores_by_cluster</span> <span class="o">=</span> <span class="p">{}</span>
-    
-    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">contributor_clusters</span><span class="p">:</span>
-        <span class="n">cluster_ratings</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ratings</span> <span class="k">if</span> <span class="n">r</span><span class="p">.</span><span class="n">rater</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">]</span>
-        <span class="n">scores_by_cluster</span><span class="p">[</span><span class="n">cluster</span><span class="p">]</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">cluster_ratings</span><span class="p">)</span>
-    
-    <span class="c1"># Note needs high scores across clusters
-</span>    <span class="n">bridging_score</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">scores_by_cluster</span><span class="p">.</span><span class="nf">values</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">bridging_score</span>
-</code></pre></div></div>
-
-<h2 id="why-is-this-approach-effective">Why is this approach effective?</h2>
-
-<p>The bridging-based approach has several key advantages:</p>
-
-<ol>
-  <li>
-    <p><strong>Reduces Polarization</strong>: By requiring agreement across perspectives, it helps surface notes that are broadly credible rather than just popular within one group</p>
-  </li>
-  <li>
-    <p><strong>Resists Gaming</strong>: Makes it harder for coordinated groups to manipulate the system since they need broad consensus</p>
-  </li>
-  <li>
-    <p><strong>Promotes Better Notes</strong>: Incentivizes contributors to write notes that are factual and neutrally worded to appeal across perspectives</p>
-  </li>
-</ol>
-
-<h2 id="current-challenges--future-work">Current Challenges &amp; Future Work</h2>
-
-<p>While Community Notes has shown promise, some open challenges include:</p>
-
-<ul>
-  <li>Scaling to more languages and regions</li>
-  <li>Handling rapidly evolving situations</li>
-  <li>Balancing speed vs accuracy</li>
-  <li>Preventing harassment of contributors</li>
-</ul>
-
-<h2 id="learn-more">Learn More</h2>
-
-<p>For a deeper technical dive, check out:</p>
-<ul>
-  <li><a href="https://twitter.github.io/communitynotes/">The Community Notes Guide</a></li>
-  <li>Our recent <a href="https://arxiv.org/pdf/2411.06116">paper on Supernotes</a></li>
-  <li>X’s <a href="https://help.twitter.com/en/using-x/community-notes">official documentation</a></li>
-</ul>
-
-<p><em>Last updated: March 14, 2024</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[A technical deep-dive into how Community Notes works to identify helpful context on social media posts]]></summary></entry><entry><title type="html">My Experience with CS/IS PhD Applications</title><link href="http://localhost:4000/2023/07/31/phd-advice.html" rel="alternate" type="text/html" title="My Experience with CS/IS PhD Applications" /><published>2023-07-31T00:00:00-07:00</published><updated>2023-07-31T00:00:00-07:00</updated><id>http://localhost:4000/2023/07/31/phd-advice</id><content type="html" xml:base="http://localhost:4000/2023/07/31/phd-advice.html"><![CDATA[<h2 id="what-is-this">What is this?</h2>
+<p><em>Last updated: April 24, 2025</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[I think it's cool!]]></summary></entry><entry><title type="html">My Experience with CS/IS PhD Applications</title><link href="http://localhost:4000/2023/07/31/phd-advice.html" rel="alternate" type="text/html" title="My Experience with CS/IS PhD Applications" /><published>2023-07-31T00:00:00-07:00</published><updated>2023-07-31T00:00:00-07:00</updated><id>http://localhost:4000/2023/07/31/phd-advice</id><content type="html" xml:base="http://localhost:4000/2023/07/31/phd-advice.html"><![CDATA[<h2 id="what-is-this">What is this?</h2>
 
 <p>I applied to PhD programs in Information Science, Computer Science, Communication, HCI (and other related fields) in 2022 (for the Fall 2023 intake cycle) while finishing my undergraduate degree in Computer Science. While I was successful in my first attempt (got into 50% of the programs I applied to), I’ve made my fair share of mistakes and inefficiencies which I believe are worth learning from.</p>
 
