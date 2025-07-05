@@ -80,11 +80,6 @@ title: Miscellaneous
             <img src="/assets/images/people/sukhnidh.jpeg" alt="Sukhnidh Kaur">
         </div>
     </a>
-    <a href="https://twitter.com/ReginaDulanjali" class="person-link" data-tags="collaborators">
-        <div class="person">
-            <img src="/assets/images/people/regina.jpeg" alt="Regina Dulanjali">
-        </div>
-    </a>
     <a href="https://www.linkedin.com/in/soumyasisgun/" class="person-link" data-tags="collaborators">
         <div class="person">
             <img src="/assets/images/people/soumyasis.jpeg" alt="Soumyasis Gun">
@@ -103,16 +98,6 @@ title: Miscellaneous
     <a href="https://scholar.google.com/citations?user=NXFwzv0AAAAJ&hl=en" class="person-link" data-tags="friends,collaborators">
         <div class="person">
             <img src="/assets/images/people/zainab.jpeg" alt="Zainab Akbar">
-        </div>
-    </a>
-    <a href="https://publictech.space/" class="person-link" data-tags="collaborators">
-        <div class="person">
-            <img src="/assets/images/people/meg.jpeg" alt="Meg Young">
-        </div>
-    </a>
-    <a href="https://dramesh14.github.io/" class="person-link" data-tags="collaborators">
-        <div class="person">
-            <img src="/assets/images/people/ramesh.jpeg" alt="Divya Ramesh">
         </div>
     </a>
     <a href="http://www.martinsaveski.com/" class="person-link" data-tags="mentors,collaborators">
@@ -173,6 +158,26 @@ title: Miscellaneous
     <a href="https://smithamilli.com/" class="person-link" data-tags="collaborators,mentors">
         <div class="person">
             <img src="/assets/images/people/smitha.jpeg" alt="Smitha Milli">
+        </div>
+    </a>
+    <a href="https://maxn.io/" class="person-link" data-tags="collaborators,mentors">
+        <div class="person">
+            <img src="/assets/images/people/max.jpg" alt="Max Nickel">
+        </div>
+    </a>
+    <a href="https://manrev.github.io/manon/" class="person-link" data-tags="collaborators,mentors">
+        <div class="person">
+            <img src="/assets/images/people/manon.jpg" alt="Manon Revel">
+        </div>
+    </a>
+    <a href="https://web.stanford.edu/~ashishg/ashishg.html" class="person-link" data-tags="collaborators,mentors">
+        <div class="person">
+            <img src="/assets/images/people/ashishgoel.jpg" alt="Ashish Goel">
+        </div>
+    </a>
+    <a href="https://procaccia.info/" class="person-link" data-tags="collaborators,mentors">
+        <div class="person">
+            <img src="/assets/images/people/procaccia.jpg" alt="Ariel Procaccia">
         </div>
     </a>
 </div> 

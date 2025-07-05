@@ -33,7 +33,7 @@ Most recent publications on <a href="#">Google Scholar</a>. <br/>
 
 <div id="selected" class="tab-content active">
     {% assign selected_pubs = site.data.publications | where: "selected", true | where_exp: "pub", "pub.type != 'media'" %}
-    {% assign selected_pubs = selected_pubs | sort: "year" | reverse %}
+    {% assign selected_pubs = selected_pubs | sort: "date" | reverse %}
     {% for pub in selected_pubs %}
         <div class="publication">
             <div class="pub-thumbnail">
@@ -74,7 +74,7 @@ Most recent publications on <a href="#">Google Scholar</a>. <br/>
 <div id="all" class="tab-content">
     <div class="publications-main">
         
-        {% assign all_pubs = site.data.publications | where_exp: "pub", "pub.type != 'media'" | sort: "year" | reverse %}
+        {% assign all_pubs = site.data.publications | where_exp: "pub", "pub.type != 'media'" | sort: "date" | reverse %}
         {% for pub in all_pubs %}
         <div class="publication" data-tags="{{ pub.tags | join: ',' }}">
             <div class="pub-thumbnail">
@@ -115,31 +115,22 @@ Most recent publications on <a href="#">Google Scholar</a>. <br/>
 
 ## Media Coverage
 
-<div class="publications-list">
-    {% assign media = site.data.publications | where: "type", "media" | sort: "year" | reverse %}
+<div class="media-list">
+    {% assign media = site.data.publications | where: "type", "media" | sort: "date" | reverse %}
     {% for item in media %}
-    <div class="publication">
-        <div class="pub-thumbnail">
-            <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
-        </div>
-        <div class="pub-content">
-            <h3>{{ item.title }}</h3>
-            <p class="authors">
-                {% for author in item.authors %}
-                    {%- if forloop.last %} and {% endif %}
-                    {%- if author == "Soham De" -%}
-                        <strong>{{ author }}</strong>
-                    {%- else -%}
-                        {{ author }}
-                    {%- endif -%}
-                    {%- unless forloop.last %}, {% endunless %}
-                {%- endfor %}
-            </p>
-            <p class="venue"><em>{{ item.venue }}. {{ item.year }}</em></p>
-            <div class="pub-links">
-                {% if item.links.html %}<a href="{{ item.links.html }}">Read Article</a>{% endif %}
-            </div>
-        </div>
+    <div class="media-item">
+        <h3><a href="{{ item.links.html }}">{{ item.title }}</a></h3>
+        <p class="media-meta">
+            {% for author in item.authors %}
+                {%- if author == "Soham De" -%}
+                    <strong>{{ author }}</strong>
+                {%- else -%}
+                    {{ author }}
+                {%- endif -%}
+                {%- unless forloop.last %}, {% endunless %}
+            {%- endfor %}
+            • {{ item.venue }}, {{ item.year }}
+        </p>
     </div>
     {% endfor %}
 </div> 

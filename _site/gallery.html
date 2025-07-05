@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soham De</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <button class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-links">
+                <a href="/" >Home</a>
+                <a href="/research" >Research</a>
+                <a href="/blog" >Blog</a>
+                <a href="/misc" >Miscellaneous</a>
+                <a href="/gallery" class="active">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        
+
+        <h2 id="gallery">Gallery</h2>
+
+<div class="gallery-albums">
+    <div class="album">
+        <h3>Cherry Blossoms</h3>
+        <div class="album-scroll">
+            <div class="album-item" style="background-image: url('/assets/images/gallery/cherry_blossoms/1.jpg');" data-img="/assets/images/gallery/cherry_blossoms/1.jpg" onclick="openLightbox(this)">
+            </div>
+            <div class="album-item" style="background-image: url('/assets/images/gallery/cherry_blossoms/2.jpg');" data-img="/assets/images/gallery/cherry_blossoms/2.jpg" onclick="openLightbox(this)">
+            </div>
+            <div class="album-item" style="background-image: url('/assets/images/gallery/cherry_blossoms/3.jpg');" data-img="/assets/images/gallery/cherry_blossoms/3.jpg" onclick="openLightbox(this)">
+            </div>
+            <div class="album-item" style="background-image: url('/assets/images/gallery/cherry_blossoms/4.jpg');" data-img="/assets/images/gallery/cherry_blossoms/4.jpg" onclick="openLightbox(this)">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" onclick="closeLightbox()">
+    <img src="" alt="Expanded image" />
+</div>
+
+<script>
+function openLightbox(element) {
+    const lightbox = document.querySelector('.lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const imgUrl = element.getAttribute('data-img');
+    lightboxImg.src = imgUrl;
+    lightbox.classList.add('active');
+}
+
+function closeLightbox() {
+    const lightbox = document.querySelector('.lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    lightbox.classList.remove('active');
+    lightboxImg.src = '';
+}
+</script>
+
+<style>
+.album-item {
+    flex: 0 0 200px;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.album-item img {
+    display: none;
+}
+</style>
+
+
+
+        <footer class="footer">
+            <div class="footer-content">
+                <span>Soham De</span>
+                <span>sohamde[at]uw.edu</span>
+                <div class="social-links">
+                    <a href="https://bsky.app/profile/sohamde.in" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="https://twitter.com/actuallysoham" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/actuallysoham" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=i1ad6GmN4uoC" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Show/hide name in navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nav-name');
+            if (window.scrollY > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        });
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+
+    <script src="/assets/js/research.js"></script>
+    <script src="/assets/js/people.js"></script>
+    <script src="/assets/js/misc.js"></script>
+</body>
+</html> 

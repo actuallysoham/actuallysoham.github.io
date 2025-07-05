@@ -1,6 +1,36 @@
+- title: "Scaling Human Judgment in Community Notes with LLMs"
+  selected: true
+  type: "paper"
+  date: "2025-06-24"
+  authors:
+    - "Haiwen Li"
+    - "Soham De"
+    - "Manon Revel"
+    - "Andreas Haupt"
+    - "Brad Miller"
+    - "Keith Coleman"
+    - "Jay Baxter"
+    - "Martin Saveski"
+    - "Michiel A. Bakker"
+  venue: "arXiv (under submission)"
+  year: 2025
+  thumbnail: "/assets/images/papers/cnllmfuture-thumb.png"
+  abstract: "This paper argues for a new paradigm for Community Notes in the LLM era: an open ecosystem where both humans and LLMs can write notes, and the decision of which notes are helpful enough to show remains in the hands of humans. This approach can accelerate the delivery of notes, while maintaining trust and legitimacy through Community Notes' foundational principle: A community of diverse human raters collectively serve as the ultimate evaluator and arbiter of what is helpful. Further, the feedback from this diverse community can be used to improve LLMs' ability to produce accurate, unbiased, broadly helpful notes--what we term Reinforcement Learning from Community Feedback (RLCF). This becomes a two-way street: LLMs serve as an asset to humans--helping deliver context quickly and with minimal effort--while human feedback, in turn, enhances the performance of LLMs. This paper describes how such a system can work, its benefits, key new risks and challenges it introduces, and a research agenda to solve those challenges and realize the potential of this approach."  # Truncated for brevity
+  links:
+    abstract: "https://arxiv.org/abs/2506.24118"
+    paper: "https://arxiv.org/pdf/2506.24118"
+  bibtex: |
+    @article{li2025scaling,
+      title={Scaling Human Judgment in Community Notes with LLMs},
+      author={Li, Haiwen and De, Soham and Revel, Manon and Haupt, Andreas and Miller, Brad and Coleman, Keith and Baxter, Jay and Saveski, Martin and Bakker, Michiel A.},
+      journal={arXiv preprint arXiv:2506.24118},
+      year={2025}
+    }
+
 - title: "Supernotes: Driving Consensus in Crowd-Sourced Fact-Checking"
   selected: true
   type: "paper"
+  date: "2025-01-15"
   authors:
     - "Soham De"
     - "Michiel A. Bakker"
@@ -20,32 +50,6 @@
       author={De, Soham and Bakker, Michiel A. and Baxter, Jay and Saveski, Martin},
       booktitle={Proceedings of the ACM Web Conference},
       year={2025}
-    }
-
-- title: "FeedSpan: A bridging-based prosocial feed reranking algorithm"
-  selected: true
-  type: "paper"
-  authors:
-    - "Luke Thorburn"
-    - "Soham De"
-    - "Kayla Duskin"
-    - "Hongfan Lu"
-    - "Smitha Milli"
-    - "Martin Saveski"
-    - "Aviv Ovadya"
-  venue: "The Prosocial Ranking Challenge"
-  year: 2024
-  thumbnail: "/assets/images/papers/prc-thumb.png"
-  abstract: "The algorithm detects civic content that doesn't attract diverse engagement (not 'bridging') and replaces it with similar content that is expected to be more bridging, hopefully reducing divisiveness without decreasing civic content."
-  links:
-    abstract: "https://rankingchallenge.substack.com/p/announcing-the-finalists-of-the-prosocial"
-  award: "Winning Intervention (Top 3)"
-  bibtex: |
-    @article{thorburn2024feedspan,
-      title={FeedSpan: A bridging-based prosocial feed reranking algorithm},
-      author={Thorburn, Luke and De, Soham and Duskin, Kayla and Lu, Hongfan and Milli, Smitha and Saveski, Martin and Ovadya, Aviv},
-      journal={The Prosocial Ranking Challenge},
-      year={2024}
     }
 
 - title: "Enhancing Crowd-Sourced Fact-Checking Using LLM-Driven Consensus"
@@ -95,6 +99,7 @@
 
 - title: "Social Media and Society in India"
   type: "paper"
+  selected: false
   authors:
     - "Soham De"
     - "Arshia Arya"
@@ -111,6 +116,7 @@
 
 - title: "Sustaining Discourse in a Rumour Network on Twitter"
   type: "poster"
+  selected: false
   authors:
     - "Soham De"
     - "Anirban Sen"
@@ -124,6 +130,7 @@
 
 - title: "Poster: Experiences of Journalists on Twitter in India"
   type: "poster"
+  selected: false
   authors:
     - "Soham De‡"
     - "Sukhnidh Kaur‡"
@@ -138,7 +145,7 @@
 
 - title: "Closed Ranks: The Discursive Value of Military Support for Indian Politicians"
   type: "paper"
-  selected: true
+  selected: false
   authors:
     - "Agrima Seth‡"
     - "Soham De‡"
@@ -157,7 +164,7 @@
 
 - title: "DISMISS: Database of Indian Social Media Influencers on Twitter"
   type: "paper"
-  selected: true
+  selected: false
   authors:
     - "Arshia Arya‡"
     - "Soham De‡"
@@ -185,34 +192,58 @@
     dataset: "https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/BPY2JY"
 
 # Media coverage
+
+- title: "An inside look at X's Community Notes"
+  type: "media"
+  date: "2025-02-20"
+  authors:
+    - "Keith Coleman"
+    - "Jay Baxter"
+  venue: "Lenny's Podcast"
+  year: 2025
+  links:
+    html: "https://www.youtube.com/watch?v=8dgyqYHLcCI&t=5877s"
+
+
+- title: "Can Community Notes match the speed of misinformation?"
+  type: "media"
+  date: "2025-01-20"
+  authors:
+    - "Lena Slachmuijlder"
+  venue: "Tech and Social Cohesion"
+  year: 2025
+  links:
+    html: "https://techandsocialcohesion.substack.com/p/can-community-notes-match-the-speed"
+
+
 - title: "Who are BJP's favourite journalists? What about Congress and AAP? A Michigan study reveals"
   type: "media"
+  date: "2022-11-18"
   authors:
     - "Soham De"
     - "Joyojeet Pal"
   venue: "Newslaundry"
   year: 2022
-  thumbnail: "/assets/images/papers/newslaundry.png"
   links:
     html: "https://www.newslaundry.com/2022/11/18/who-are-bjps-favourite-journalists-what-about-congress-and-aap-a-michigan-study-reveals"
 
 - title: "Coordinated campaign? India #1 source for pro-Russia tweets amid Ukraine war, says Ashoka study"
   type: "media"
+  date: "2022-03-15"
   authors:
     - "Regina Mihindukulasuriya"
     - "Soham De"
   venue: "The Print"
   year: 2022
-  thumbnail: "/assets/images/papers/print.png"
   links:
     html: "https://theprint.in/world/coordinated-campaign-india-1-source-for-pro-russia-tweets-amid-ukraine-war-says-ashoka-study/969479/"
 
 - title: "Exploring the Intersection between Computer Science and Social Development"
   type: "media"
+  date: "2023-06-10"
   authors:
     - "Yukti Arora"
   venue: "Ashoka University"
   year: 2023
-  thumbnail: "/assets/images/papers/ashoka.png"
   links:
     html: "https://www.ashoka.edu.in/exploring-the-intersection-between-computer-science-and-social-development/" 
