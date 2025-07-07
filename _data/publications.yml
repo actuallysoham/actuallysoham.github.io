@@ -91,7 +91,7 @@
     - "Joyojeet Pal"
   venue: "ACM Journal on Computing and Sustainable Societies (JCSS)"
   year: 2024
-  thumbnail: "/assets/images/papers/compass22.png"
+  thumbnail: "/assets/images/papers/overlap-thumb.png"
   abstract: "Social media offers increasingly diverse mechanisms for the distribution of motivated information..."
   links:
     abstract: "https://dl.acm.org/doi/10.1145/3640790"
@@ -215,6 +215,16 @@
   links:
     html: "https://techandsocialcohesion.substack.com/p/can-community-notes-match-the-speed"
 
+- title: "Fact-checking’s future: can social media handle the truth?"
+  type: "media"
+  date: "2025-01-26"
+  authors:
+    - "Josh Kramer"
+  venue: "New Public"
+  year: 2025
+  links:
+    html: "https://newpublic.substack.com/p/fact-checkings-future-can-social"
+
 
 - title: "Who are BJP's favourite journalists? What about Congress and AAP? A Michigan study reveals"
   type: "media"
@@ -232,7 +242,6 @@
   date: "2022-03-15"
   authors:
     - "Regina Mihindukulasuriya"
-    - "Soham De"
   venue: "The Print"
   year: 2022
   links:

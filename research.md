@@ -113,7 +113,7 @@ Most recent publications on <a href="#">Google Scholar</a>. <br/>
     </div>
 </div>
 
-## Media Coverage
+## Selected Media Coverage
 
 <div class="media-list">
     {% assign media = site.data.publications | where: "type", "media" | sort: "date" | reverse %}
