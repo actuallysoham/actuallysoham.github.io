@@ -5,10 +5,21 @@ title: Gallery
 
 ## Gallery
 
+On rare occassions, I find  myself motivated enough to carry my camera out with me. And on even rarer occassions, I make an effort to update my website with some of those pictures! Most shot on a Sony A6400, with a 17-70mm F/2.8 (yes, I spent all my money on a single lens).
 <div class="gallery-albums">
     <div class="album">
-        <h3>Cherry Blossoms</h3>
+        <h3>Seattle</h3>
         <div class="album-scroll">
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/seattle/01.jpg');"
+                data-img="/assets/images/gallery/seattle/01.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/seattle/02.jpg');"
+                data-img="/assets/images/gallery/seattle/02.jpg"
+                onclick="openLightbox(this)">
+            </div>
             <div class="album-item"
                 style="background-image: url('/assets/images/gallery/cherry_blossoms/01.jpg');"
                 data-img="/assets/images/gallery/cherry_blossoms/01.jpg"
@@ -30,16 +41,128 @@ title: Gallery
                 onclick="openLightbox(this)">
             </div>
         </div>
-        <h3>Seattle</h3>
+    </div>
+    <div class="album">    
+        <h3>New York</h3>
         <div class="album-scroll">
             <div class="album-item"
-                style="background-image: url('/assets/images/gallery/seattle/01.jpg');"
-                data-img="/assets/images/gallery/seattle/01.jpg"
+                style="background-image: url('/assets/images/gallery/newyork/01.jpg');"
+                data-img="/assets/images/gallery/newyork/01.jpg"
                 onclick="openLightbox(this)">
             </div>
             <div class="album-item"
-                style="background-image: url('/assets/images/gallery/seattle/02.jpg');"
-                data-img="/assets/images/gallery/seattle/02.jpg"
+                style="background-image: url('/assets/images/gallery/newyork/02.jpg');"
+                data-img="/assets/images/gallery/newyork/02.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/newyork/03.jpg');"
+                data-img="/assets/images/gallery/newyork/03.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/newyork/04.jpg');"
+                data-img="/assets/images/gallery/newyork/04.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/newyork/05.jpg');"
+                data-img="/assets/images/gallery/newyork/05.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/newyork/06.jpg');"
+                data-img="/assets/images/gallery/newyork/06.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/newyork/07.jpg');"
+                data-img="/assets/images/gallery/newyork/07.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/newyork/08.jpg');"
+                data-img="/assets/images/gallery/newyork/08.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/newyork/09.jpg');"
+                data-img="/assets/images/gallery/newyork/09.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/newyork/10.jpg');"
+                data-img="/assets/images/gallery/newyork/10.jpg"
+                onclick="openLightbox(this)">
+            </div>
+        </div>
+    </div>
+    <div class="album">
+        <h3>India</h3>
+        <div class="album-scroll">
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/india/01.jpg');"
+                data-img="/assets/images/gallery/india/01.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/india/02.jpg');"
+                data-img="/assets/images/gallery/india/02.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/india/03.jpg');"
+                data-img="/assets/images/gallery/india/03.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/india/04.jpg');"
+                data-img="/assets/images/gallery/india/04.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/india/05.jpg');"
+                data-img="/assets/images/gallery/india/05.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/india/06.jpg');"
+                data-img="/assets/images/gallery/india/06.jpg"
+                onclick="openLightbox(this)">
+            </div>
+        </div>
+    </div>
+    <div class="album">
+        <h3>Tanvi</h3>
+        <div class="album-scroll">
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/tanvi/01.jpg');"
+                data-img="/assets/images/gallery/tanvi/01.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/tanvi/02.jpg');"
+                data-img="/assets/images/gallery/tanvi/02.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/tanvi/03.jpg');"
+                data-img="/assets/images/gallery/tanvi/03.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/tanvi/04.jpg');"
+                data-img="/assets/images/gallery/tanvi/04.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/tanvi/05.jpg');"
+                data-img="/assets/images/gallery/tanvi/05.jpg"
+                onclick="openLightbox(this)">
+            </div>
+            <div class="album-item"
+                style="background-image: url('/assets/images/gallery/tanvi/06.jpg');"
+                data-img="/assets/images/gallery/tanvi/06.jpg"
                 onclick="openLightbox(this)">
             </div>
         </div>
