@@ -193,6 +193,19 @@
 
 # Media coverage
 
+
+- title: "As millions adopt Grok to fact-check, misinformation abounds"
+  type: "media"
+  date: "2025-07-11"
+  authors:
+    - "Nilesh Christopher"
+    - "Valerio Pepe"
+  venue: "Al Jazeera"
+  year: 2025
+  links:
+    html: "https://www.aljazeera.com/economy/2025/7/11/as-millions-adopt-grok-to-fact-check-misinformation-abounds"
+
+
 - title: "An inside look at X's Community Notes"
   type: "media"
   date: "2025-02-20"
