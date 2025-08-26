@@ -12,7 +12,7 @@
     - "Jay Baxter"
     - "Martin Saveski"
     - "Michiel A. Bakker"
-  venue: "arXiv (under submission)"
+  venue: "Journal of Online Trust and Safety"
   year: 2025
   thumbnail: "/assets/images/papers/cnllmfuture-thumb.png"
   abstract: "This paper argues for a new paradigm for Community Notes in the LLM era: an open ecosystem where both humans and LLMs can write notes, and the decision of which notes are helpful enough to show remains in the hands of humans. This approach can accelerate the delivery of notes, while maintaining trust and legitimacy through Community Notes' foundational principle: A community of diverse human raters collectively serve as the ultimate evaluator and arbiter of what is helpful. Further, the feedback from this diverse community can be used to improve LLMs' ability to produce accurate, unbiased, broadly helpful notes--what we term Reinforcement Learning from Community Feedback (RLCF). This becomes a two-way street: LLMs serve as an asset to humans--helping deliver context quickly and with minimal effort--while human feedback, in turn, enhances the performance of LLMs. This paper describes how such a system can work, its benefits, key new risks and challenges it introduces, and a research agenda to solve those challenges and realize the potential of this approach."  # Truncated for brevity
