@@ -5,7 +5,7 @@ title: Gallery
 
 ## Gallery
 
-On rare occassions, I find  myself motivated enough to carry my camera out with me. And on even rarer occassions, I make an effort to update my website with some of those pictures! Most shot on a Sony A6400, with a 17-70mm F/2.8 (yes, I spent all my money on a single lens).
+On rare occassions, I find  myself motivated enough to carry my camera out with me. And on even rarer occassions, I make an effort to update my website with some of those pictures! Most shot on a Sony A6400, with a 17-70mm F/2.8 or a 1979 Nikon FE with a 50mm F/1.8.
 <div class="gallery-albums">
     <div class="album">
         <h3>Seattle</h3>
@@ -46,8 +46,8 @@ On rare occassions, I find  myself motivated enough to carry my camera out with 
         <h3>New York</h3>
         <div class="album-scroll">
             <div class="album-item"
-                style="background-image: url('/assets/images/gallery/newyork/01.jpg');"
-                data-img="/assets/images/gallery/newyork/01.jpg"
+                style="background-image: url('/assets/images/gallery/newyork/film_jersey.jpg');"
+                data-img="/assets/images/gallery/newyork/film_jersey.jpg"
                 onclick="openLightbox(this)">
             </div>
             <div class="album-item"
@@ -56,8 +56,8 @@ On rare occassions, I find  myself motivated enough to carry my camera out with 
                 onclick="openLightbox(this)">
             </div>
             <div class="album-item"
-                style="background-image: url('/assets/images/gallery/newyork/03.jpg');"
-                data-img="/assets/images/gallery/newyork/03.jpg"
+                style="background-image: url('/assets/images/gallery/newyork/film_subway.jpg');"
+                data-img="/assets/images/gallery/newyork/film_subway.jpg"
                 onclick="openLightbox(this)">
             </div>
             <div class="album-item"
@@ -66,13 +66,13 @@ On rare occassions, I find  myself motivated enough to carry my camera out with 
                 onclick="openLightbox(this)">
             </div>
             <div class="album-item"
-                style="background-image: url('/assets/images/gallery/newyork/05.jpg');"
-                data-img="/assets/images/gallery/newyork/05.jpg"
+                style="background-image: url('/assets/images/gallery/newyork/film_portrait.jpg');"
+                data-img="/assets/images/gallery/newyork/film_portrait.jpg"
                 onclick="openLightbox(this)">
             </div>
             <div class="album-item"
-                style="background-image: url('/assets/images/gallery/newyork/06.jpg');"
-                data-img="/assets/images/gallery/newyork/06.jpg"
+                style="background-image: url('/assets/images/gallery/newyork/film_camera.jpg');"
+                data-img="/assets/images/gallery/newyork/film_camera.jpg"
                 onclick="openLightbox(this)">
             </div>
             <div class="album-item"
@@ -136,8 +136,8 @@ On rare occassions, I find  myself motivated enough to carry my camera out with 
         <h3>Tanvi</h3>
         <div class="album-scroll">
             <div class="album-item"
-                style="background-image: url('/assets/images/gallery/tanvi/01.jpg');"
-                data-img="/assets/images/gallery/tanvi/01.jpg"
+                style="background-image: url('/assets/images/gallery/tanvi/film_tanvi.jpg');"
+                data-img="/assets/images/gallery/tanvi/film_tanvi.jpg"
                 onclick="openLightbox(this)">
             </div>
             <div class="album-item"

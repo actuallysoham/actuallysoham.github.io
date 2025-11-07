@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="/assets/css/main.css">
     <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script>
     <link rel="icon" href="data:,">
+    <script>
+        // Prevent flash of unstyled content - set theme immediately
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 <body>
     <nav class="navbar">
@@ -22,6 +29,12 @@
                 <a href="/blog" >Blog</a>
                 <a href="/misc" >Miscellaneous</a>
                 <a href="/gallery" >Gallery</a>
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <svg class="dark-mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path class="sun-icon" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        <path class="moon-icon" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" style="display: none;"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
@@ -49,11 +62,40 @@
 
         <h2 id="about-me">About Me</h2>
 
-<p>I’m a PhD student at the <a href="https://www.washington.edu">University of Washington</a> advised by <a href="https://faculty.washington.edu/msaveski">Martin Saveski</a>, a Research Scientist Intern at <a href="https://ai.meta.com/research/">Meta (FAIR)</a> under <a href="https://smithamilli.com/">Smitha Milli</a> and <a href="https://maxn.io/">Max Nickel</a> and a research affiliate at <a href="https://www.mit.edu/">MIT</a>.  My research interests are broadly within <a href="https://www.science.org/doi/10.1126/science.1167742">Computational Social Science</a>, and span several topics including <a href="https://dl.acm.org/doi/10.5555/3692070.3693952">pluralistic alignment</a>, <a href="https://arxiv.org/pdf/1606.06565">scalable oversight</a> and algorithms with <a href="https://humancompatible.ai/news/2024/01/18/the-prosocial-ranking-challenge-60000-in-prizes-for-better-social-media-algorithms/">pro-social</a> objectives. Previously, I interned at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/">Microsoft Research India</a> and at the <a href="https://umich.edu/">University of Michigan</a> under <a href="https://joyojeet.people.si.umich.edu/">Joyojeet Pal</a>. I graduated magna cum laude from <a href="https://www.ashoka.edu.in/">Ashoka University</a> with a Gold Medal in Computer Science. Beyond academics, I’m a competent artist, photographer, archer and an incompetent pianist.<br /><br /></p>
+<p>I’m a PhD student at the <a href="https://www.washington.edu">University of Washington</a> advised by <a href="https://faculty.washington.edu/msaveski">Martin Saveski</a>, a Student Researcher at <a href="https://ai.meta.com/research/">Meta (FAIR)</a> under <a href="https://smithamilli.com/">Smitha Milli</a> and <a href="https://maxn.io/">Max Nickel</a> and a research affiliate at <a href="https://www.mit.edu/">MIT</a>.  My research interests are broadly within <a href="https://www.science.org/doi/10.1126/science.1167742">Computational Social Science</a>, and span several topics including <a href="https://dl.acm.org/doi/10.5555/3692070.3693952">pluralistic alignment</a>, <a href="https://arxiv.org/pdf/1606.06565">scalable oversight</a> and algorithms with <a href="https://humancompatible.ai/news/2024/01/18/the-prosocial-ranking-challenge-60000-in-prizes-for-better-social-media-algorithms/">pro-social</a> objectives. Previously, I interned at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/">Microsoft Research India</a> and at the <a href="https://umich.edu/">University of Michigan</a> under <a href="https://joyojeet.people.si.umich.edu/">Joyojeet Pal</a>. I graduated magna cum laude from <a href="https://www.ashoka.edu.in/">Ashoka University</a> with a Gold Medal in Computer Science. Beyond academics, I’m a competent artist, photographer, archer and an incompetent pianist.<br /><br /></p>
 
 <p>If you’re interested in my research (and even if you aren’t) let’s chat 💬, get <a href="https://www.corner.inc/list/f8e4fe28-926d-4c2d-8205-aba38ec232c0">coffee</a>  ☕ and/or <a href="https://www.corner.inc/list/e95b5dee-3a77-4c01-b562-9b9d0417e5c8">hike</a> up a mountain ⛰️!</p>
 
 <h2 id="recent-research-view-all">Recent Research <a href="/research" class="link-button">View all</a></h2>
+
+<div class="publication">
+    <div class="pub-thumbnail">
+        <a href="/papers/question-the-questions-auditing-representation-in-online-deliberative-processes">
+            <img src="/assets/images/papers/teaser_qtq.png" alt="Thumbnail for Question the Questions: Auditing Representation in Online Deliberative Processes" />
+        </a>
+    </div>
+    <div class="pub-content">
+        <h3>Question the Questions: Auditing Representation in Online Deliberative Processes</h3>
+        <p class="authors">
+            <strong>Soham De</strong>, Lodewijk Gelauff, Ashish Goel, Smitha Milli, Ariel Procaccia,  and Alice Siu
+        </p>
+        <p class="venue"><em>In Submission. 2025</em></p>
+        <div class="pub-links">
+            <a href="https://arxiv.org/abs/2511.04588">Abstract</a>
+            <a href="https://arxiv.org/pdf/2511.04588">PDF</a>
+            
+            <a class="bibtex-btn" data-bibtex="@article{de2025question,
+  title={Question the Questions: Auditing Representation in Online Deliberative Processes},
+  author={De, Soham and Gelauff, Lodewijk and Goel, Ashish and Milli, Smitha and Procaccia, Ariel and Siu, Alice},
+  journal={arXiv preprint arXiv:2511.04588},
+  year={2025}
+}
+">
+                Copy BibTeX
+            </a>
+        </div>
+    </div>
+</div>
 
 <div class="publication">
     <div class="pub-thumbnail">
@@ -78,10 +120,6 @@
   year={2025}
 }
 ">
-                <svg class="copy-icon" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" />
-                    <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" />
-                </svg>
                 Copy BibTeX
             </a>
         </div>
@@ -111,10 +149,6 @@
   year={2025}
 }
 ">
-                <svg class="copy-icon" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" />
-                    <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" />
-                </svg>
                 Copy BibTeX
             </a>
         </div>
@@ -187,6 +221,7 @@
         });
     </script>
 
+    <script src="/assets/js/dark-mode.js"></script>
     <script src="/assets/js/research.js"></script>
     <script src="/assets/js/people.js"></script>
     <script src="/assets/js/misc.js"></script>

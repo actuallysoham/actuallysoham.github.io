@@ -1,3 +1,28 @@
+- title: "Question the Questions: Auditing Representation in Online Deliberative Processes"
+  selected: true
+  type: "paper"
+  date: "2025-11-06"
+  authors:
+    - "Soham De"
+    - "Lodewijk Gelauff"
+    - "Ashish Goel"
+    - "Smitha Milli"
+    - "Ariel Procaccia"
+    - "Alice Siu"
+  venue: "In Submission"
+  year: 2025
+  thumbnail: "/assets/images/papers/teaser_qtq.png"
+  links:
+    abstract: "https://arxiv.org/abs/2511.04588"
+    paper: "https://arxiv.org/pdf/2511.04588"
+  bibtex: |
+    @article{de2025question,
+      title={Question the Questions: Auditing Representation in Online Deliberative Processes},
+      author={De, Soham and Gelauff, Lodewijk and Goel, Ashish and Milli, Smitha and Procaccia, Ariel and Siu, Alice},
+      journal={arXiv preprint arXiv:2511.04588},
+      year={2025}
+    }
+
 - title: "Scaling Human Judgment in Community Notes with LLMs"
   selected: true
   type: "paper"
@@ -127,21 +152,6 @@
   abstract: "Social media has evolved to be an effective means for individuals to stay relevant and garner a profitable followership online..."
   links:
     paper: "/assets/pdf/ic2s2_ssr.pdf"
-
-- title: "Poster: Experiences of Journalists on Twitter in India"
-  type: "poster"
-  selected: false
-  authors:
-    - "Soham De‡"
-    - "Sukhnidh Kaur‡"
-    - "Joyojeet Pal"
-  venue: "ACM SIGCHI Symposum for HCI and Friends"
-  year: 2022
-  thumbnail: "/assets/images/papers/hci_friends_22.png"
-  equal_contribution: true
-  links:
-    html: "https://namastehci.in/"
-  award: "Best Poster Award"
 
 - title: "Closed Ranks: The Discursive Value of Military Support for Indian Politicians"
   type: "paper"

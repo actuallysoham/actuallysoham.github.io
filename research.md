@@ -28,7 +28,7 @@ title: Research
     <button class="tab-button active" data-tab="selected">Selected</button>
     <button class="tab-button" data-tab="all">All</button>
 </div>
-Most recent publications on <a href="#">Google Scholar</a>. <br/>
+Most recent publications on <a href="https://scholar.google.com/citations?user=i1ad6GmN4uoC">Google Scholar</a>. <br/>
 ‡ indicates equal contribution. <br/> <br/>
 
 <div id="selected" class="tab-content active">
@@ -59,10 +59,6 @@ Most recent publications on <a href="#">Google Scholar</a>. <br/>
                     {% if pub.links.paper %}<a href="{{ pub.links.paper }}">PDF</a>{% endif %}
                     {% if pub.links.code %}<a href="{{ pub.links.code }}">Code</a>{% endif %}
                     <a class="bibtex-btn" data-bibtex="{{ pub.bibtex | default: 'No BibTeX available' }}">
-                        <svg class="copy-icon" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"/>
-                            <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"/>
-                        </svg>
                         Copy BibTeX
                     </a>
                 </div>
@@ -100,10 +96,6 @@ Most recent publications on <a href="#">Google Scholar</a>. <br/>
                     {% if pub.links.paper %}<a href="{{ pub.links.paper }}">PDF</a>{% endif %}
                     {% if pub.links.code %}<a href="{{ pub.links.code }}">Code</a>{% endif %}
                     <a class="bibtex-btn" data-bibtex="{{ pub.bibtex | default: 'No BibTeX available' }}">
-                        <svg class="copy-icon" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"/>
-                            <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"/>
-                        </svg>
                         Copy BibTeX
                     </a>
                 </div>
