@@ -16,8 +16,8 @@ title: Research
 
 ### Ongoing Work
 
-1. <b>Scaling up crowd-sourced fact-checking (Community Notes) using LLMs:</b>
-    As an extension of the Supernotes paper, I am building a writing assistant that helps Community Note writers write better notes by giving them real-time feedback on the predicted performance of a note. Along with other collaborators, I am also testing out different ways to use LLMs to support note raters on social media discern fact-checking note quality more efficiently and accurately.<br/><br/> 
+1. <b>Scaling up crowd-sourced context systems (Community Notes) using LLMs:</b>
+    As an extension of the Supernotes paper, I am building a writing assistant that helps Community Note writers write better notes by giving them real-time feedback on the predicted performance of a note. Along with other collaborators, I am also testing out different ways to use LLMs to support note raters on social media discern note quality more efficiently and accurately.<br/><br/> 
 
 2. <b>Algorithmic re-ranking of social media feeds:</b>
     In 2024, we were one of the three winning interventions in the Prosocial Ranking Challenge, hosted by CHAI, Berkeley -- and our proposed feed re-ranking algorithm was used an one of 5 experimental arms in a four-month long field study across several social media platforms. Currently, we are working on analysing the experimental data, as well as the observational data collected as a part of the experiment to better understand (a) the impact of feed re-ranking algorithms on people and (b) the overall information/engagement environment across these social media platforms during the time of the experiment. 
