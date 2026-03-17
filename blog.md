@@ -18,7 +18,7 @@ I will never be able to write all the things I have planned to write here. But h
         </div>
     {% endfor %}
     <div class="blog-item">
-        <h3><a href="/2026/03/16/seattle-cafe-list.html">Soham's Seattle Café Rankings</a></h3>
+        <h3><a href="seattle-cafe-list.html">Soham's Seattle Café Rankings</a></h3>
         <div class="blog-meta">Living document</div>
         <p class="blog-description">A ranked list of Seattle cafés with adjustable weights for coffee, pastry, ambience, and workability. Includes short reviews where I've written them.</p>
     </div>

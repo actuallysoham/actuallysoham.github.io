@@ -10,7 +10,7 @@ title: Miscellaneous
 </p>
 
 <div class="people-grid">
-    <a href="https://in.linkedin.com/in/tanvi-roy" class="person-link" data-tags="friends">
+    <a href="https://www.linkedin.com/in/tanviroy/" class="person-link" data-tags="friends">
         <div class="person">
             <img src="/assets/images/people/tanvi.jpeg" alt="Tanvi Roy">
         </div>
