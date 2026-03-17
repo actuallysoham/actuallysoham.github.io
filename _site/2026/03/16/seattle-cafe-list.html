@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soham De</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    >
+    <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="data:,">
+    <script>
+        // Prevent flash of unstyled content - set theme immediately
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <button class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-links">
+                <a href="/" >Home</a>
+                <a href="/research" >Research</a>
+                <a href="/blog" class="active">Blog</a>
+                <a href="/misc" >Miscellaneous</a>
+                <a href="/gallery" >Gallery</a>
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <svg class="dark-mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path class="sun-icon" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        <path class="moon-icon" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" style="display: none;"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content cafe-page">
+
+
+        <div class="post">
+            <h2>Seattle Café Rankings</h2>
+            <div class="post-meta">March 16, 2026</div>
+
+            <div class="post-content">
+                <p class="cafe-intro">
+                    Ever since I moved to Seattle, I've been a regular at many cafés. Here's a list of cafes I frequent and love. I'm a wierd person with wierd priorities in life. For instance: I like Seattle weather. Latte art is as important to me the actual coffee. I <i>chose</i> to do a PhD (you get the picture). So to make this list marginally more useful, I've added weights to the different criteria I'm scoring these on which you're welcome/advised to set. 
+                    I encourage you to set your own priorities below (and to read Malcolm Gladwell's <a href="https://www.newyorker.com/magazine/2011/02/14/the-order-of-things">fantastic essay</a> to understand why that's a good idea) and send me your hot takes and recommendations!
+                </p>
+
+                <div class="cafe-layout">
+                    <div class="cafe-left">
+                        <h3>Set your priorities</h3>
+                        <p class="cafe-intro">
+                            Move the sliders to reflect your priorities. Scores are normalised so the total weight is always 100%.
+                        </p>
+
+                        <div class="cafe-controls" aria-label="Weight sliders for café ranking">
+                            <div class="cafe-control">
+                                <label for="weight-coffee">Coffee (C)</label>
+                                <input id="weight-coffee" type="range" min="0" max="100" value="40">
+                                <span class="cafe-weight-value">Weight: <span data-weight-label="coffee">40%</span></span>
+                            </div>
+                            <div class="cafe-control">
+                                <label for="weight-pastry">Pastry (P)</label>
+                                <input id="weight-pastry" type="range" min="0" max="100" value="20">
+                                <span class="cafe-weight-value">Weight: <span data-weight-label="pastry">20%</span></span>
+                            </div>
+                            <div class="cafe-control">
+                                <label for="weight-ambience">Ambience (A)</label>
+                                <input id="weight-ambience" type="range" min="0" max="100" value="25">
+                                <span class="cafe-weight-value">Weight: <span data-weight-label="ambience">25%</span></span>
+                            </div>
+                            <div class="cafe-control">
+                                <label for="weight-workability">Workability (W)</label>
+                                <input id="weight-workability" type="range" min="0" max="100" value="15">
+                                <span class="cafe-weight-value">Weight: <span data-weight-label="workability">15%</span></span>
+                            </div>
+                        </div>
+
+                        <table class="cafe-table" aria-label="Ranked list of cafés in Seattle">
+                            <thead>
+                                <tr>
+                                    <th>Café</th>
+                                    <th>C</th>
+                                    <th>P</th>
+                                    <th>A</th>
+                                    <th>W</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cafe-table-body">
+                                <!-- Rows populated by JavaScript -->
+                            </tbody>
+                        </table>
+
+                        <section class="cafe-reviews-section" id="cafe-reviews">
+                            <button type="button" class="cafe-reviews-toggle" id="cafe-reviews-toggle" aria-expanded="false">Show all reviews</button>
+                            <div class="cafe-reviews-list hidden" id="cafe-reviews-list">
+                                <div class="cafe-review-block" id="review-piedmont-cafe">
+                                    <h4>Piedmont Cafe</h4>
+                                    <p><strong>Last visited:</strong> Mar 14, 2026</p>
+                                    <p><strong>Soham ordered:</strong> Caffè Latte (12oz, $7), Almond Twist ($5)</p>
+                                    <p><strong>Coffee (6/10):</strong> The latte was well balanced, though slightly milk-forward for my taste. The milk was a bit over-frothed, which gave it a foamier mouthfeel and resulted in latte art without clear separation. Overall, it was a pleasant cup, though perhaps a little overpriced.</p>
+                                    <p><strong>Pastry (7/10):</strong> I really enjoyed it. It wasn’t overly sweet, had the right amount of moisture, and paired nicely with the latte. The almond flavor was pronounced and added a pleasant warmth.</p>
+                                    <p><strong>Ambience (9/10):</strong> This is where Piedmont truly shines. The space isn’t minimalist, it’s unapologetically maximalist, and it evokes a Tuscan feel with exposed wooden beams adorning the vaulted ceilings and an abundance of plants bringing life to the room. Large floor-to-ceiling arched windows let in plenty of daylight, and decorative tiles add character throughout. On overcast days, the cool blue light from the windows contrasts nicely with the warm yellow glow from the lamps inside.</p>
+                                    <p><strong>Workability (7/10):</strong> During my visit, the atmosphere was quiet with soft music playing, making it ideal for working. That said, it can get very crowded and noisy later in the day, which makes working difficult. They also enforce a 90-minute limit for staying or working, and the Wi‑Fi was unreliable during my visit; charging points are also hard to locate and rare.</p>
+                                </div>
+                                <div class="cafe-review-block" id="review-temple-pastries">
+                                    <h4>Temple Pastries</h4>
+                                    <p><strong>Last visited:</strong> Mar 15, 2026</p>
+                                    <p><strong>Soham ordered:</strong> Caffè Latte (12oz, $7), Turkey &amp; Pesto Sandwich ($12), Kouign Amann (gifted)</p>
+                                    <p><strong>Coffee (7/10):</strong> The latte was pretty good; I liked the roast from Broadcast Coffee, which left a distinct espresso flavor. Temple has a pretty good under‑the‑counter Mavam espresso machine, but the latte art was pretty much non‑existent, in part because the barista served the latte in a paper cup, and because the milk was too foamy.</p>
+                                    <p><strong>Pastry (9/10):</strong> Temple is probably a pastry‑first establishment, so no surprises that the pastries were to die for. Tanvi’s cinnamon cruffin was insane – a great balance of sweetness with the crispy dough and powdered sugar coating. The sandwich came with perfectly golden‑brown butter‑toasted sourdough, with turkey coated in a pesto‑pistachio mix. Lindsey, who also works at Temple, gifted us a Kouign Amann, their favorite pastry, which Tanvi absolutely loved. It was a little too sweet for me, but I did enjoy the very crispy sugar‑coated pastry.</p>
+                                    <p><strong>Ambience (8/10):</strong> Temple has large floor‑to‑ceiling windows, communal tables, and some outdoor seating. There’s plenty of sunlight and lots of plants adding a spark of greenery in all the right places.</p>
+                                    <p><strong>Workability (8/10):</strong> Noise levels during my visit on a relatively busy Sunday were slightly high to work without headphones. Seating was adequate but I can imagine finding none during peak weekend hours. Charging points are abundantly available for almost every table, the music was nice but mostly subdued by conversational white noise, and the Wi‑Fi worked reliably without any time limits.</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="cafe-right">
+                        <h3>Where these places are</h3>
+                        <p class="cafe-intro">
+                            Click a marker for the café name.
+                        </p>
+                        <div class="cafe-map-container">
+                            <div id="cafe-map" aria-label="Map of cafés in Seattle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <span>Soham De</span>
+                <span>sohamde[at]uw.edu</span>
+                <div class="social-links">
+                    <a href="https://bsky.app/profile/sohamde.in" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="https://twitter.com/actuallysoham" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/actuallysoham" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=i1ad6GmN4uoC" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Show/hide name in navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nav-name');
+            if (window.scrollY > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        });
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin="">
+    </script>
+
+    <script>
+        // Café data and ranking logic + map markers
+        (function() {
+            const cafes = [
+                {
+                    name: 'Milstead & Co.',
+                    coffee: 9,
+                    pastry: 7,
+                    ambience: 7,
+                    workability: 7,
+                    lat: 47.6491,
+                    lng: -122.3493
+                },
+                {
+                    name: 'Aroom Coffee',
+                    coffee: 7,
+                    pastry: 6,
+                    ambience: 7,
+                    workability: 7,
+                    lat: 47.6532087,
+                    lng: -122.3476954
+                },
+                {
+                    name: 'Storyville Coffee',
+                    coffee: 8,
+                    pastry: 7,
+                    ambience: 7,
+                    workability: 6,
+                    lat: 47.60895,
+                    lng: -122.3430112
+                },
+                {
+                    name: 'Mr. West Café Bar',
+                    coffee: 6,
+                    pastry: 6,
+                    ambience: 9,
+                    workability: 5,
+                    lat: 47.662077,
+                    lng: -122.2982249
+                },
+                {
+                    name: 'Piedmont Cafe',
+                    coffee: 6,
+                    pastry: 7,
+                    ambience: 9,
+                    workability: 7,
+                    lat: 47.611551,
+                    lng: -122.3291473
+                },
+                {
+                    name: 'Temple Pastries',
+                    coffee: 7,
+                    pastry: 9,
+                    ambience: 8,
+                    workability: 8,
+                    lat: 47.5996199,
+                    lng: -122.3014666
+                },
+                {
+                    name: 'Espresso Vivace',
+                    coffee: 9,
+                    pastry: 5,
+                    ambience: 6,
+                    workability: 9,
+                    lat: 47.6237833,
+                    lng: -122.3231996
+                },
+                {
+                    name: 'Ancient Gate Coffee',
+                    coffee: 8,
+                    pastry: 5,
+                    ambience: 9,
+                    workability: 8,
+                    lat: 47.6651065,
+                    lng: -122.3145023
+                },
+                {
+                    name: 'Fremont Coffee Company',
+                    coffee: 7,
+                    pastry: 6,
+                    ambience: 8,
+                    workability: 7,
+                    lat: 47.6516638,
+                    lng: -122.3556715
+                },
+                {
+                    name: 'Sip House',
+                    coffee: 7,
+                    pastry: 5,
+                    ambience: 6,
+                    workability: 8,
+                    lat: 47.6651032,
+                    lng: -122.3170675
+                },
+                {
+                    name: 'URL Coffee',
+                    coffee: 8,
+                    pastry: 5,
+                    ambience: 6,
+                    workability: 9,
+                    lat: 47.6067021,
+                    lng: -122.3230947
+                },
+                {
+                    name: 'Phê',
+                    coffee: 6,
+                    pastry: 7,
+                    ambience: 7,
+                    workability: 4,
+                    lat: 47.6150321,
+                    lng: -122.3249179
+                },
+                {
+                    name: 'Sea Wolf Bakers',
+                    coffee: 7,
+                    pastry: 9,
+                    ambience: 8,
+                    workability: 8,
+                    lat: 47.6511098,
+                    lng: -122.3457783
+                },
+                {
+                    name: 'Zoka Coffee',
+                    coffee: 7,
+                    pastry: 7,
+                    ambience: 6,
+                    workability: 9,
+                    lat: 47.6660834,
+                    lng: -122.3024849
+                },
+                {
+                    name: 'Armistice Coffee',
+                    coffee: 8,
+                    pastry: 7,
+                    ambience: 7,
+                    workability: 8,
+                    lat: 47.677839,
+                    lng: -122.3201741
+                }
+            ];
+
+            const sliders = {
+                coffee: document.getElementById('weight-coffee'),
+                pastry: document.getElementById('weight-pastry'),
+                ambience: document.getElementById('weight-ambience'),
+                workability: document.getElementById('weight-workability')
+            };
+
+            const labels = {
+                coffee: document.querySelector('[data-weight-label="coffee"]'),
+                pastry: document.querySelector('[data-weight-label="pastry"]'),
+                ambience: document.querySelector('[data-weight-label="ambience"]'),
+                workability: document.querySelector('[data-weight-label="workability"]')
+            };
+
+            const tableBody = document.getElementById('cafe-table-body');
+
+            function getNormalisedWeights() {
+                const raw = {
+                    coffee: parseInt(sliders.coffee.value, 10),
+                    pastry: parseInt(sliders.pastry.value, 10),
+                    ambience: parseInt(sliders.ambience.value, 10),
+                    workability: parseInt(sliders.workability.value, 10)
+                };
+
+                const total = raw.coffee + raw.pastry + raw.ambience + raw.workability;
+
+                if (total === 0) {
+                    return {
+                        coffee: 0.25,
+                        pastry: 0.25,
+                        ambience: 0.25,
+                        workability: 0.25
+                    };
+                }
+
+                return {
+                    coffee: raw.coffee / total,
+                    pastry: raw.pastry / total,
+                    ambience: raw.ambience / total,
+                    workability: raw.workability / total
+                };
+            }
+
+            function updateWeightLabels() {
+                const normalised = getNormalisedWeights();
+                labels.coffee.textContent = Math.round(normalised.coffee * 100) + '%';
+                labels.pastry.textContent = Math.round(normalised.pastry * 100) + '%';
+                labels.ambience.textContent = Math.round(normalised.ambience * 100) + '%';
+                labels.workability.textContent = Math.round(normalised.workability * 100) + '%';
+            }
+
+            function computeScores() {
+                const w = getNormalisedWeights();
+
+                return cafes
+                    .map(cafe => {
+                        const score =
+                            cafe.coffee * w.coffee +
+                            cafe.pastry * w.pastry +
+                            cafe.ambience * w.ambience +
+                            cafe.workability * w.workability;
+                        return { ...cafe, overall: score };
+                    })
+                    .sort((a, b) => b.overall - a.overall);
+            }
+
+            const markerByName = {};
+            const CAFES_WITH_REVIEWS = ['Piedmont Cafe', 'Temple Pastries'];
+            const reviewIdByCafeName = {
+                'Piedmont Cafe': 'review-piedmont-cafe',
+                'Temple Pastries': 'review-temple-pastries'
+            };
+
+            function cafeNameCell(cafe) {
+                if (CAFES_WITH_REVIEWS.indexOf(cafe.name) !== -1) {
+                    const id = reviewIdByCafeName[cafe.name];
+                    return '<a href="#' + id + '" class="cafe-name-link" data-cafe-name="' + cafe.name + '">' + cafe.name + '</a>';
+                }
+                return cafe.name;
+            }
+
+            function renderTable() {
+                const ranked = computeScores();
+                tableBody.innerHTML = '';
+
+                ranked.forEach(cafe => {
+                    const row = document.createElement('tr');
+                    row.dataset.cafeName = cafe.name;
+                    row.innerHTML = `
+                        <td>${cafeNameCell(cafe)}</td>
+                        <td class="cafe-score">${cafe.coffee}</td>
+                        <td class="cafe-score">${cafe.pastry}</td>
+                        <td class="cafe-score">${cafe.ambience}</td>
+                        <td class="cafe-score">${cafe.workability}</td>
+                        <td class="cafe-score cafe-overall">${cafe.overall.toFixed(1)}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+                bindCafeNameLinks();
+            }
+
+            function showReviewsAndScrollTo(id) {
+                const list = document.getElementById('cafe-reviews-list');
+                const toggle = document.getElementById('cafe-reviews-toggle');
+                if (list.classList.contains('hidden')) {
+                    list.classList.remove('hidden');
+                    if (toggle) {
+                        toggle.textContent = 'Hide reviews';
+                        toggle.setAttribute('aria-expanded', 'true');
+                    }
+                }
+                const el = document.getElementById(id);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
+            function bindCafeNameLinks() {
+                tableBody.querySelectorAll('.cafe-name-link').forEach(function (a) {
+                    a.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var id = this.getAttribute('href').slice(1);
+                        showReviewsAndScrollTo(id);
+                    });
+                });
+            }
+
+            var reviewsToggle = document.getElementById('cafe-reviews-toggle');
+            var reviewsList = document.getElementById('cafe-reviews-list');
+            if (reviewsToggle && reviewsList) {
+                reviewsToggle.addEventListener('click', function () {
+                    var isHidden = reviewsList.classList.toggle('hidden');
+                    reviewsToggle.textContent = isHidden ? 'Show all reviews' : 'Hide reviews';
+                    reviewsToggle.setAttribute('aria-expanded', !isHidden);
+                });
+            }
+
+            if (window.location.hash && reviewIdByCafeName) {
+                var hash = window.location.hash.slice(1);
+                if (document.getElementById(hash)) {
+                    showReviewsAndScrollTo(hash);
+                }
+            }
+
+            Object.keys(sliders).forEach(key => {
+                sliders[key].addEventListener('input', function() {
+                    updateWeightLabels();
+                    renderTable();
+                });
+            });
+
+            // Map setup with markers
+            const map = L.map('cafe-map', {
+                scrollWheelZoom: false
+            }).setView([47.62, -122.335], 12);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            cafes.forEach(cafe => {
+                if (typeof cafe.lat === 'number' && typeof cafe.lng === 'number') {
+                    const marker = L.marker([cafe.lat, cafe.lng]).addTo(map).bindPopup(cafe.name);
+                    markerByName[cafe.name] = marker;
+                }
+            });
+
+            function focusCafeOnMap(name) {
+                const cafe = cafes.find(c => c.name === name);
+                if (!cafe || typeof cafe.lat !== 'number' || typeof cafe.lng !== 'number') return;
+                map.setView([cafe.lat, cafe.lng], 13, { animate: true });
+                const marker = markerByName[name];
+                if (marker) {
+                    marker.openPopup();
+                }
+            }
+
+            tableBody.addEventListener('mouseover', function (event) {
+                const row = event.target.closest('tr');
+                if (!row || !row.dataset.cafeName) return;
+                focusCafeOnMap(row.dataset.cafeName);
+            });
+
+            tableBody.addEventListener('click', function (event) {
+                const row = event.target.closest('tr');
+                if (!row || !row.dataset.cafeName) return;
+                focusCafeOnMap(row.dataset.cafeName);
+                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+
+            // Initial render
+            updateWeightLabels();
+            renderTable();
+        })();
+    </script>
+
+    <script src="/assets/js/dark-mode.js"></script>
+    <script src="/assets/js/research.js"></script>
+    <script src="/assets/js/people.js"></script>
+    <script src="/assets/js/misc.js"></script>
+</body>
+</html>
+

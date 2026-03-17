@@ -1251,6 +1251,214 @@ a[href="/cv.pdf"],
     margin-top: 5px;
 }
 
+/* Blog index & cafe page layout */
+.blog-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cafe-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Match blog post vertical rhythm (e.g. phd-advice) */
+.cafe-page .post {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cafe-page .post h2:first-of-type {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.cafe-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+}
+
+.cafe-left,
+.cafe-right {
+    flex: 1;
+    min-width: 0;
+}
+
+.cafe-intro {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.cafe-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1.5rem;
+    margin: 1rem 0 1.5rem;
+}
+
+.cafe-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 14px;
+}
+
+.cafe-control label {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.cafe-control input[type="range"] {
+    width: 100%;
+}
+
+.cafe-weight-value {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.cafe-weight-summary {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.cafe-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.cafe-table th,
+.cafe-table td {
+    padding: 0.5rem 0.4rem;
+    text-align: left;
+}
+
+.cafe-table th {
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.cafe-table tr + tr {
+    border-top: 1px solid var(--border-light);
+}
+
+.cafe-score {
+    font-variant-numeric: tabular-nums;
+}
+
+.cafe-overall {
+    font-weight: 600;
+}
+
+.cafe-footnote {
+    margin-top: 0.75rem;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Reviews section: separation from table, smaller font, one-after-another */
+.cafe-reviews-section {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.cafe-reviews-toggle {
+    font-size: 14px;
+    color: var(--link-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px dotted var(--text-tertiary);
+    font-weight: 500;
+}
+
+.cafe-reviews-toggle:hover {
+    color: var(--link-hover);
+}
+
+.cafe-reviews-list {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+.cafe-reviews-list.hidden {
+    display: none;
+}
+
+.cafe-review-block {
+    margin-bottom: 2rem;
+}
+
+.cafe-review-block:last-child {
+    margin-bottom: 0;
+}
+
+.cafe-review-block h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 0.5rem 0;
+}
+
+.cafe-review-block p {
+    margin: 0.35em 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.cafe-table .cafe-name-link {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-tertiary);
+}
+
+.cafe-table .cafe-name-link:hover {
+    color: var(--link-hover);
+    border-bottom-color: var(--link-hover);
+}
+
+.cafe-map-container {
+    margin-top: 0.75rem;
+    height: 360px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+#cafe-map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Keep the map visible while scrolling on larger screens */
+@media (min-width: 801px) {
+    .cafe-right {
+        position: sticky;
+        top: 90px; /* below navbar */
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 800px) {
+    .cafe-layout {
+        flex-direction: column;
+    }
+
+    .cafe-controls {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 /* Individual post styles */
 .post {
     max-width: 700px;
