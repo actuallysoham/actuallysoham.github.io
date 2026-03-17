@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Miscellaneous
+title: People
 ---
 
 ## People
@@ -180,32 +180,10 @@ title: Miscellaneous
             <img src="/assets/images/people/procaccia.jpg" alt="Ariel Procaccia">
         </div>
     </a>
+    <a href="https://www.slaughter.page/" class="person-link" data-tags="collaborators">
+        <div class="person">
+            <img src="/assets/images/people/isaac.jpeg" alt="Isaac Slaughter">
+        </div>
+    </a>
 </div> 
 
-## Movie Recommendations
-
-I watch more movies than I care to admit. Here are some of my all-time favorites, in no particular order. <a href="mailto:sohamde@uw.edu">Drop me a movie recommendation!</a>
-
-<div class="movie-list">
-    {% for movie in site.data.movies limit:3 %}
-        <div class="movie-card">
-            <div class="movie-title">{{ movie.title }}</div>
-            <div class="movie-director">{{ movie.director }}</div>
-            <div class="movie-year">{{ movie.year }}</div>
-        </div>
-    {% endfor %}
-</div>
-
-<div style="text-align: center; margin: 20px 0;">
-    <a href="#" class="show-more-btn" id="show-more-movies">Show more ↓</a>
-</div>
-
-<div class="movie-list hidden" id="more-movies">
-    {% for movie in site.data.movies offset:3 %}
-        <div class="movie-card">
-            <div class="movie-title">{{ movie.title }}</div>
-            <div class="movie-director">{{ movie.director }}</div>
-            <div class="movie-year">{{ movie.year }}</div>
-        </div>
-    {% endfor %}
-</div>

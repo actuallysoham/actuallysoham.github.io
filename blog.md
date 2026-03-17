@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Blog
+title: Non-Research
 ---
 
-## Blog
+## Non-Research
 
-I will never be able to write all the things I have planned to write here. But here are some of the things I have written so far. I also don't think you should take any of them too seriously - these reflect my thoughts at the time of writing and I'm pretty bad at updating them over time!
+This is a collection of non-peer-reviewed thoughts that I'm unable to contain within myself. I don't think you should take any of them too seriously -- these reflect my views at the time of writing and I'm pretty bad at updating them over time!
 
 <div class="blog-list">
     {% for post in site.posts %}
@@ -18,8 +18,13 @@ I will never be able to write all the things I have planned to write here. But h
         </div>
     {% endfor %}
     <div class="blog-item">
-        <h3><a href="seattle-cafe-list.html">Soham's Seattle Café Rankings</a></h3>
-        <div class="blog-meta">Living document</div>
-        <p class="blog-description">A ranked list of Seattle cafés with adjustable weights for coffee, pastry, ambience, and workability. Includes short reviews where I've written them.</p>
+        <h3><a href="/seattle-cafe-list.html">Soham's Seattle Café Rankings</a></h3>
+        <div class="blog-meta">Last Update: March 17, 2026</div>
+        <p class="blog-description">A ranked list of Seattle cafés with adjustable weights for coffee, pastry, ambience, and workability. Includes occassional short reviews and features occassional guest reviewers.</p>
+    </div>
+    <div class="blog-item">
+        <h3><a href="/s-tier-movies">Soham's S-Tier Movies</a></h3>
+        <div class="blog-meta">Last Update: Jan 30, 2025</div>
+        <p class="blog-description">An unranked list of some of my all-time favourite films, following the footsteps of the one-and-only <a href="https://kabirahuja2431.github.io/misc/">Kabir Ahuja.</a></p>
     </div>
 </div>
