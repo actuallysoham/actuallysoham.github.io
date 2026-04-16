@@ -1,3 +1,65 @@
+- title: "The Prosocial Ranking Challenge: Reducing Polarization on Social Media without Sacrificing Engagement"
+  selected: true
+  type: "paper"
+  date: "2026-03-20"
+  authors:
+    - "Jonathan Stray"
+    - "Ian Baker"
+    - "George Beknazar-Yuzbashev"
+    - "Ceren Budak"
+    - "Julia Kamin"
+    - "Kylan Rutherford"
+    - "Mateusz Stalinski"
+    - "Tin Acosta"
+    - "Chris Bail"
+    - "Michael Bernstein"
+    - "Mark Brandt"
+    - "Amy Bruckman"
+    - "Anshuman Chhabra"
+    - "Soham De"
+    - "Kayla Duskin"
+    - "Sara Fish"
+    - "Beth Goldberg"
+    - "Andy Guess"
+    - "Dylan Hadfield-Menell"
+    - "Muhammed Haroon"
+    - "Safwan Hossain"
+    - "Michael Inzlicht"
+    - "Gauri Jain"
+    - "Yanchen Jiang"
+    - "Alexander P. Landry"
+    - "Yphtach Lelkes"
+    - "Hongfan Lu"
+    - "Peter Mason"
+    - "Jennifer McCoy"
+    - "Smitha Milli"
+    - "Paul Resnick"
+    - "Emily Saltz"
+    - "Martin Saveski"
+    - "Lisa Schirch"
+    - "Max Spohn"
+    - "Siddarth Srinivasan"
+    - "Alexis Tatore"
+    - "Luke Thorburn"
+    - "Joshua A. Tucker"
+    - "Robb Willer"
+    - "Magdalena Wojcieszak"
+    - "Manuel Wüthrich"
+    - "Sylvan Zheng"
+  venue: "arXiv"
+  year: 2026
+  thumbnail: "/assets/images/papers/prc.png"
+  links:
+    abstract: "https://arxiv.org/abs/2603.19626"
+    paper: "https://arxiv.org/pdf/2603.19626"
+  bibtex: |
+    @article{stray2026prosocial,
+      title={The Prosocial Ranking Challenge: Reducing Polarization on Social Media without Sacrificing Engagement},
+      author={Stray, Jonathan and Baker, Ian and Beknazar-Yuzbashev, George and Budak, Ceren and Kamin, Julia and Rutherford, Kylan and Stalinski, Mateusz and Acosta, Tin and Bail, Chris and Bernstein, Michael and Brandt, Mark and Bruckman, Amy and Chhabra, Anshuman and De, Soham and Duskin, Kayla and Fish, Sara and Goldberg, Beth and Guess, Andy and Hadfield-Menell, Dylan and Haroon, Muhammed and Hossain, Safwan and Inzlicht, Michael and Jain, Gauri and Jiang, Yanchen and Landry, Alexander P. and Lelkes, Yphtach and Lu, Hongfan and Mason, Peter and McCoy, Jennifer and Milli, Smitha and Resnick, Paul and Saltz, Emily and Saveski, Martin and Schirch, Lisa and Spohn, Max and Srinivasan, Siddarth and Tatore, Alexis and Thorburn, Luke and Tucker, Joshua A. and Willer, Robb and Wojcieszak, Magdalena and Wuthrich, Manuel and Zheng, Sylvan},
+      journal={arXiv preprint},
+      year={2026}
+    }
+
 - title: "Question the Questions: Auditing Representation in Online Deliberative Processes"
   selected: true
   type: "paper"
