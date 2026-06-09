@@ -9,4 +9,27 @@ document.addEventListener('DOMContentLoaded', function() {
             showMoreBtn.textContent = moreMovies.classList.contains('hidden') ? 'Show more ↓' : 'Show less ↑';
         });
     }
+
+    const profileImg = document.querySelector('.profile-img');
+    if (profileImg) {
+        const images = [
+            '/assets/images/profile.jpg',
+            '/assets/images/profile_sunglass.png',
+            '/assets/images/profile_oakley.png'
+        ];
+        let idx = 0;
+
+        profileImg.addEventListener('click', function() {
+            if (profileImg.dataset.switching) return;
+            profileImg.dataset.switching = 'true';
+
+            profileImg.style.opacity = '0';
+            setTimeout(() => {
+                idx = (idx + 1) % images.length;
+                profileImg.src = images[idx];
+                profileImg.style.opacity = '1';
+                delete profileImg.dataset.switching;
+            }, 150);
+        });
+    }
 }); 

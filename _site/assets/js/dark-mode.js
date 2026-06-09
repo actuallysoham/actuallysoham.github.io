@@ -1,58 +1,44 @@
 (function() {
-    // Get theme from localStorage or default to light
+    const THEMES = [
+        { name: 'light',     icon: 'fa-sun' },
+        { name: 'dark',      icon: 'fa-moon' },
+        { name: 'edgy',      icon: 'fa-bolt' },
+        { name: 'aesthetic', icon: 'fa-feather' },
+        { name: 'retro',     icon: 'fa-floppy-disk' },
+    ];
+
     function getTheme() {
         return localStorage.getItem('theme') || 'light';
     }
 
-    // Set theme
     function setTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         updateIcon(theme);
     }
 
-    // Update icon based on theme
     function updateIcon(theme) {
-        const sunIcon = document.querySelector('.sun-icon');
-        const moonIcon = document.querySelector('.moon-icon');
-        
-        if (sunIcon && moonIcon) {
-            if (theme === 'dark') {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
-            } else {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
-            }
-        }
+        const icon = document.querySelector('.theme-icon');
+        if (!icon) return;
+        const entry = THEMES.find(t => t.name === theme) || THEMES[0];
+        icon.className = `theme-icon fa-solid ${entry.icon}`;
     }
 
-    // Initialize theme on page load
-    function initTheme() {
-        const theme = getTheme();
-        setTheme(theme);
+    function cycleTheme() {
+        const current = getTheme();
+        const idx = THEMES.findIndex(t => t.name === current);
+        const next = THEMES[(idx + 1) % THEMES.length];
+        setTheme(next.name);
     }
 
-    // Toggle theme
-    function toggleTheme() {
-        const currentTheme = getTheme();
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    }
-
-    // Initialize on DOM ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initTheme);
+        document.addEventListener('DOMContentLoaded', () => setTheme(getTheme()));
     } else {
-        initTheme();
+        setTheme(getTheme());
     }
 
-    // Add click handler to toggle button
     document.addEventListener('DOMContentLoaded', function() {
-        const toggleButton = document.querySelector('.dark-mode-toggle');
-        if (toggleButton) {
-            toggleButton.addEventListener('click', toggleTheme);
-        }
+        const btn = document.querySelector('.dark-mode-toggle');
+        if (btn) btn.addEventListener('click', cycleTheme);
     });
 })();
-

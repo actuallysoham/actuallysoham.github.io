@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=VT323&display=swap');
+
 :root {
     --bg-color: #ffffff;
     --text-color: #24292e;
@@ -14,6 +16,8 @@
     --shadow-hover: rgba(0, 0, 0, 0.1);
     --navbar-bg: rgba(255, 255, 255, 0.8);
     --profile-border: white;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-size: 16px;
 }
 
 [data-theme="dark"] {
@@ -34,12 +38,72 @@
     --profile-border: #30363d;
 }
 
+[data-theme="edgy"] {
+    --bg-color: #090909;
+    --text-color: #00ff88;
+    --text-secondary: #00cc66;
+    --text-tertiary: #008844;
+    --link-color: #ff0066;
+    --link-hover: #ff3399;
+    --border-color: #1c1c1c;
+    --border-light: #141414;
+    --bg-light: #111111;
+    --bg-hover: #1a1a1a;
+    --shadow: rgba(0, 255, 136, 0.08);
+    --shadow-light: rgba(0, 255, 136, 0.04);
+    --shadow-hover: rgba(0, 255, 136, 0.15);
+    --navbar-bg: rgba(9, 9, 9, 0.92);
+    --profile-border: #00ff88;
+    --font-family: 'Share Tech Mono', 'Courier New', monospace;
+    --font-size: 15px;
+}
+
+[data-theme="aesthetic"] {
+    --bg-color: #faf4eb;
+    --text-color: #3b2314;
+    --text-secondary: #7a5c4a;
+    --text-tertiary: #9a7060;
+    --link-color: #8b4513;
+    --link-hover: #6b2f0d;
+    --border-color: #e4d5c3;
+    --border-light: #ede4d6;
+    --bg-light: #f4ece0;
+    --bg-hover: #ece0d0;
+    --shadow: rgba(59, 35, 20, 0.08);
+    --shadow-light: rgba(59, 35, 20, 0.04);
+    --shadow-hover: rgba(59, 35, 20, 0.12);
+    --navbar-bg: rgba(250, 244, 235, 0.92);
+    --profile-border: #e4d5c3;
+    --font-family: 'EB Garamond', Georgia, serif;
+    --font-size: 17px;
+}
+
+[data-theme="retro"] {
+    --bg-color: #0000aa;
+    --text-color: #ffffff;
+    --text-secondary: #aaaaff;
+    --text-tertiary: #8888dd;
+    --link-color: #55ffff;
+    --link-hover: #ffffff;
+    --border-color: #2222cc;
+    --border-light: #1111bb;
+    --bg-light: #0000cc;
+    --bg-hover: #1111cc;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --shadow-light: rgba(0, 0, 0, 0.2);
+    --shadow-hover: rgba(0, 0, 0, 0.4);
+    --navbar-bg: rgba(0, 0, 170, 0.95);
+    --profile-border: #55ffff;
+    --font-family: 'VT323', 'Courier New', monospace;
+    --font-size: 20px;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: var(--font-family);
     max-width: 800px;
     margin: 40px auto;
     padding: 0 20px;
-    font-size: 16px;
+    font-size: var(--font-size);
     line-height: 1.5;
     color: var(--text-color);
     background-color: var(--bg-color);
@@ -52,13 +116,20 @@ body {
     margin-bottom: 50px;
 }
 
+.profile-img-wrapper {
+    flex-shrink: 0;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
 .profile-img {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     border: 4px solid var(--profile-border);
     box-shadow: 0 1px 3px var(--shadow-light), 0 1px 2px var(--shadow);
-    transition: border-color 0.3s ease;
+    transition: opacity 0.15s ease, border-color 0.3s ease;
+    display: block;
 }
 
 .header-content h1 {
@@ -432,28 +503,14 @@ em, strong {
     background: var(--bg-hover);
 }
 
-.dark-mode-icon {
-    width: 18px;
-    height: 18px;
+.theme-icon {
+    font-size: 14px;
     color: var(--text-secondary);
     transition: color 0.2s;
 }
 
-.dark-mode-toggle:hover .dark-mode-icon {
+.dark-mode-toggle:hover .theme-icon {
     color: var(--text-color);
-}
-
-[data-theme="dark"] .sun-icon {
-    display: none;
-}
-
-[data-theme="dark"] .moon-icon {
-    display: block !important;
-}
-
-[data-theme="light"] .moon-icon,
-:not([data-theme]) .moon-icon {
-    display: none;
 }
 
 /* Adjust main content to account for fixed navbar */

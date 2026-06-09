@@ -29,11 +29,8 @@
                 <a href="/blog" >Non-Research</a>
                 <a href="/people" >People</a>
                 <a href="/gallery" >Gallery</a>
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <svg class="dark-mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path class="sun-icon" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-                        <path class="moon-icon" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" style="display: none;"/>
-                    </svg>
+                <button class="dark-mode-toggle" aria-label="Toggle theme">
+                    <i class="theme-icon fa-solid fa-sun"></i>
                 </button>
             </div>
         </div>
@@ -42,12 +39,14 @@
     <div class="content">
         
         <div class="header">
-            <img src="/assets/images/profile.jpg" alt="Soham De" class="profile-img">
+            <div class="profile-img-wrapper">
+                <img src="/assets/images/profile.jpg" alt="Soham De" class="profile-img">
+            </div>
             <div class="header-content">
                 <h1>
                     <span class="first-name">Soham De</span> 
                 </h1>
-                <p>PhD student at <a href="https://www.washington.edu">UW</a></p>
+                <p>PhD candidate at <a href="https://www.washington.edu">UW</a></p>
                 <p>sohamde[AT]uw.edu</p>
                 <div class="social-links">
                     <a href="https://bsky.app/profile/sohamde.in" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
@@ -62,7 +61,7 @@
 
         <h2 id="about-me">About Me</h2>
 
-<p>I’m a PhD student at the <a href="https://www.washington.edu">University of Washington</a> advised by <a href="https://faculty.washington.edu/msaveski">Martin Saveski</a>. My research interests are broadly within <a href="https://www.science.org/doi/10.1126/science.1167742">Computational Social Science</a>, and span several topics including <a href="https://dl.acm.org/doi/10.5555/3692070.3693952">pluralistic alignment</a>, <a href="https://arxiv.org/pdf/1606.06565">scalable oversight</a> and algorithms with <a href="https://humancompatible.ai/news/2024/01/18/the-prosocial-ranking-challenge-60000-in-prizes-for-better-social-media-algorithms/">pro-social</a> objectives. Previously, I was a Visiting Student Researcher and Research Scientist Intern at <a href="https://ai.meta.com/research/">Meta Superintellience Labs (FAIR)</a> under <a href="https://smithamilli.com/">Smitha Milli</a> and <a href="https://maxn.io/">Max Nickel</a>, and a Research Intern at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/">Microsoft Research India</a> and at the <a href="https://umich.edu/">University of Michigan</a> under <a href="https://joyojeet.people.si.umich.edu/">Joyojeet Pal</a>. I graduated magna cum laude from <a href="https://www.ashoka.edu.in/">Ashoka University</a> with a Gold Medal in Computer Science. Beyond academics, I’m a competent artist, photographer, archer and an incompetent pianist.<br /><br /></p>
+<p>I’m a PhD candidate at the <a href="https://www.washington.edu">University of Washington</a> advised by <a href="https://faculty.washington.edu/msaveski">Martin Saveski</a>. My research interests are broadly within <a href="https://www.science.org/doi/10.1126/science.1167742">Computational Social Science</a>, and span several topics including <a href="https://dl.acm.org/doi/10.5555/3692070.3693952">pluralistic alignment</a>, <a href="https://arxiv.org/pdf/1606.06565">scalable oversight</a> and algorithms with <a href="https://humancompatible.ai/news/2024/01/18/the-prosocial-ranking-challenge-60000-in-prizes-for-better-social-media-algorithms/">pro-social</a> objectives. Previously, I was a Visiting Student Researcher and Research Scientist Intern at <a href="https://ai.meta.com/research/">Meta Superintellience Labs (FAIR)</a> under <a href="https://smithamilli.com/">Smitha Milli</a> and <a href="https://maxn.io/">Max Nickel</a>, and a Research Intern at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/">Microsoft Research India</a> and at the <a href="https://umich.edu/">University of Michigan</a> under <a href="https://joyojeet.people.si.umich.edu/">Joyojeet Pal</a>. I graduated magna cum laude from <a href="https://www.ashoka.edu.in/">Ashoka University</a> with a Gold Medal in Computer Science. Beyond academics, I’m a competent artist, photographer, archer and an incompetent pianist.<br /><br /></p>
 
 <p>If you’re interested in my research (and even if you aren’t) let’s chat 💬, get <a href="https://sohamde.in/seattle-cafe-list.html">coffee</a>  ☕ and/or <a href="https://www.corner.inc/list/e95b5dee-3a77-4c01-b562-9b9d0417e5c8">hike</a> up a mountain ⛰️!</p>
 
@@ -160,6 +159,12 @@
 <div class="news-list">
     
         <div class="news-item">
+            <div class="news-date">2026-06-08</div>
+            <div class="news-content"><p>I passed my General Exam today, and am now a PhD candidate!</p>
+</div>
+        </div>
+    
+        <div class="news-item">
             <div class="news-date">2025-06-02</div>
             <div class="news-content"><p>I’ll be in New York City till mid September, interning with the FAIR Alignment team at Meta. If you’re in the area, let’s catch up!</p>
 </div>
@@ -168,12 +173,6 @@
         <div class="news-item">
             <div class="news-date">2025-04-26</div>
             <div class="news-content"><p>Heading to Sydney, AUS to present the Supernotes paper at WWW’25.</p>
-</div>
-        </div>
-    
-        <div class="news-item">
-            <div class="news-date">2025-04-05</div>
-            <div class="news-content"><p>In UMSI, organising the 5th International conference on Social Media and Society in India. This is my 4th year of involvement with this conference.</p>
 </div>
         </div>
     
