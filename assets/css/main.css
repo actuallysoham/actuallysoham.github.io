@@ -1869,6 +1869,10 @@ a[href="/cv.pdf"],
         margin-bottom: 6px;
     }
 
+    .photo-caption {
+        display: none;
+    }
+
     .album-hero h1 {
         font-size: 26px;
     }
