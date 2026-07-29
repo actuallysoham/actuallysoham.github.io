@@ -1,3 +1,29 @@
+- title: "How Human Feedback Shapes AI-generated Community Notes"
+  selected: true
+  type: "paper"
+  date: "2026-07-28"
+  authors:
+    - "Soham De"
+    - "Isaac Slaughter"
+    - "Jiawei Guo"
+    - "Qiao-Yun Cheng"
+    - "Jiayuan Yan"
+    - "Sruti Banerjee"
+    - "Martin Saveski"
+  venue: "arXiv"
+  year: 2026
+  thumbnail: "/assets/images/papers/collab_notes.png"
+  links:
+    abstract: "https://arxiv.org/abs/2606.30905"
+    paper: "https://arxiv.org/pdf/2606.30905"
+  bibtex: |
+    @article{de2026human,
+      title={How Human Feedback Shapes AI-generated Community Notes},
+      author={De, Soham and Slaughter, Isaac and Guo, Jiawei and Cheng, Qiao-Yun and Yan, Jiayuan and Banerjee, Sruti and Saveski, Martin},
+      journal={arXiv preprint arXiv:2606.30905},
+      year={2026}
+    }
+
 - title: "The Prosocial Ranking Challenge: Reducing Polarization on Social Media without Sacrificing Engagement"
   selected: true
   type: "paper"

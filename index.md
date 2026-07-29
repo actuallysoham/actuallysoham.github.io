@@ -14,9 +14,7 @@ If you're interested in my research (and even if you aren't) let's chat 💬, ge
 {% for pub in site.data.publications limit:3 %}
 <div class="publication">
     <div class="pub-thumbnail">
-        <a href="/papers/{{ pub.title | slugify }}">
-            <img src="{{ pub.thumbnail }}" alt="Thumbnail for {{ pub.title }}">
-        </a>
+        <img src="{{ pub.thumbnail }}" alt="Thumbnail for {{ pub.title }}">
     </div>
     <div class="pub-content">
         <h3>{{ pub.title }}</h3>

@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+{% assign gallery_album = site.data.gallery | where: "slug", page.album | first %}
+
+<div class="album-hero">
+    <a href="/gallery" class="back-link">&larr; All Albums</a>
+    <h1>{{ gallery_album.title }}</h1>
+    <p class="album-count">{{ gallery_album.images | size }} photos</p>
+</div>
+
+<div class="breakout">
+    <div class="photo-grid">
+        {% for image in gallery_album.images %}
+        <figure class="photo-item"
+            data-full="/assets/images/gallery/full/{{ image.file }}"
+            data-caption="{{ image.caption | escape }}">
+            <img src="/assets/images/gallery/thumbs/{{ image.file }}" alt="{{ image.caption | default: gallery_album.title | escape }}">
+            {% if image.caption and image.caption != "" %}
+            <figcaption class="photo-caption">{{ image.caption }}</figcaption>
+            {% endif %}
+        </figure>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="gallery-lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" aria-label="Previous photo">&#10094;</button>
+    <img src="" alt="">
+    <p class="lightbox-caption"></p>
+    <button class="lightbox-next" aria-label="Next photo">&#10095;</button>
+</div>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soham De</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="data:,">
+    <script>
+        // Prevent flash of unstyled content - set theme immediately
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <button class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-links">
+                <a href="/" >Home</a>
+                <a href="/research" >Research</a>
+                <a href="/blog" >Non-Research</a>
+                <a href="/people" >People</a>
+                <a href="/gallery" class="active">Gallery</a>
+                <button class="dark-mode-toggle" aria-label="Toggle theme">
+                    <i class="theme-icon fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        
+
+        
+
+<div class="album-hero">
+    <a href="/gallery" class="back-link">&larr; All Albums</a>
+    <h1>Tanvi</h1>
+    <p class="album-count">8 photos</p>
+</div>
+
+<div class="breakout">
+    <div class="photo-grid">
+        
+        <figure class="photo-item"
+            data-full="/assets/images/gallery/full/tanvi/01.jpg"
+            data-caption="">
+            <img src="/assets/images/gallery/thumbs/tanvi/01.jpg" alt="Tanvi">
+            
+        </figure>
+        
+        <figure class="photo-item"
+            data-full="/assets/images/gallery/full/tanvi/02.jpg"
+            data-caption="">
+            <img src="/assets/images/gallery/thumbs/tanvi/02.jpg" alt="Tanvi">
+            
+        </figure>
+        
+        <figure class="photo-item"
+            data-full="/assets/images/gallery/full/tanvi/03.jpg"
+            data-caption="">
+            <img src="/assets/images/gallery/thumbs/tanvi/03.jpg" alt="Tanvi">
+            
+        </figure>
+        
+        <figure class="photo-item"
+            data-full="/assets/images/gallery/full/tanvi/04.jpg"
+            data-caption="">
+            <img src="/assets/images/gallery/thumbs/tanvi/04.jpg" alt="Tanvi">
+            
+        </figure>
+        
+        <figure class="photo-item"
+            data-full="/assets/images/gallery/full/tanvi/05.jpg"
+            data-caption="">
+            <img src="/assets/images/gallery/thumbs/tanvi/05.jpg" alt="Tanvi">
+            
+        </figure>
+        
+        <figure class="photo-item"
+            data-full="/assets/images/gallery/full/tanvi/06.jpg"
+            data-caption="">
+            <img src="/assets/images/gallery/thumbs/tanvi/06.jpg" alt="Tanvi">
+            
+        </figure>
+        
+        <figure class="photo-item"
+            data-full="/assets/images/gallery/full/tanvi/07.jpg"
+            data-caption="">
+            <img src="/assets/images/gallery/thumbs/tanvi/07.jpg" alt="Tanvi">
+            
+        </figure>
+        
+        <figure class="photo-item"
+            data-full="/assets/images/gallery/full/tanvi/film_tanvi.jpg"
+            data-caption="">
+            <img src="/assets/images/gallery/thumbs/tanvi/film_tanvi.jpg" alt="Tanvi">
+            
+        </figure>
+        
+    </div>
+</div>
+
+<div class="gallery-lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" aria-label="Previous photo">&#10094;</button>
+    <img src="" alt="">
+    <p class="lightbox-caption"></p>
+    <button class="lightbox-next" aria-label="Next photo">&#10095;</button>
+</div>
+
+
+        <footer class="footer">
+            <div class="footer-content">
+                <span>Soham De</span>
+                <span>sohamde[at]uw.edu</span>
+                <div class="social-links">
+                    <a href="https://bsky.app/profile/sohamde.in" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                    <a href="https://twitter.com/actuallysoham" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://github.com/actuallysoham" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=i1ad6GmN4uoC" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Show/hide name in navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.nav-name');
+            if (window.scrollY > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        });
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+
+    <script src="/assets/js/dark-mode.js"></script>
+    <script src="/assets/js/research.js"></script>
+    <script src="/assets/js/people.js"></script>
+    <script src="/assets/js/misc.js"></script>
+    <script src="/assets/js/gallery.js"></script>
+</body>
+</html> 
