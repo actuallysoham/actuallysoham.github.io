@@ -93,3 +93,19 @@
       caption: "Tanvi, somewhere in Little Italy (iirc), NYC"
     - file: "tanvi/tanvi_udaipur.jpg"
       caption: "Tanvi in some palace in Udaipur"
+
+- slug: other
+  title: "Other"
+  images:
+    - file: "other/01.jpg"
+      caption: "Old Faithful going off, faithfully as ever."
+    - file: "other/02.jpg"
+      caption: "The Morning Glory geyser flaunting dramatic colors."
+    - file: "other/03.jpg"
+      caption: "Bisons crossing a river in Lamar Valley"
+    - file: "other/04.jpg"
+      caption: "The Grand Canyon of the Yellowstone River"
+    - file: "other/05.jpg"
+      caption: "Sunrise at Schwabacher Landing, along with 1,000 other content creators (not pictured)"
+    - file: "other/06.jpg"
+      caption: "A majestic horse chilling with the Tetons in the background"
