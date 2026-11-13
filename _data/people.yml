@@ -257,3 +257,33 @@
   img: brad.jpeg
   met: Elsewhere
   note: "Collaborator at Community Notes"
+
+- name: Kabir Ahuja
+  url: "https://kabirahuja2431.github.io/"
+  img: kabir.jpeg
+  met: UW
+  note: "Biggest movie buff I know! Go see [his lists](https://kabirahuja2431.github.io/misc/)"
+
+- name: Meghna Gupta
+  url: "https://gupta-meghna64.github.io/"
+  img: meghna.jpeg
+  met: UW
+  note: "We almost had a common member on our PhD committees 🙃"
+
+- name: Navreet Kaur
+  url: "https://navreeetkaur.github.io/"
+  img: navreet.jpeg
+  met: UW
+  note: "She seems to like copying my career moves: first into UW, then into Meta"
+
+- name: Advait Bhat
+  url: "https://advaitmb.com/"
+  img: advait.jpeg
+  met: UW
+  note: "Not to be confused with Kabir, but totally understandable if you do"
+
+- name: Amelia Dogan
+  url: "https://ameliadogan.github.io/"
+  img: amelia.jpeg
+  met: UW
+  note: "They made me a co-author on a paper I barely did any work on"

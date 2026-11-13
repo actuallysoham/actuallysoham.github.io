@@ -1060,6 +1060,16 @@ em, strong {
     pointer-events: none;
 }
 
+.is-floating .person-card.has-link {
+    pointer-events: auto;
+}
+
+.pc-note a {
+    color: var(--link-hover);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 .is-floating .person-card[hidden] {
     display: none;
 }

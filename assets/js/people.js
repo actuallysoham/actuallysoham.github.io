@@ -187,9 +187,13 @@
     // ---------- Hover card ----------
     const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+    // Notes may contain Markdown-style links: [text](https://...)
+    const linkify = s => esc(s).replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
+        (_, t, u) => `<a href="${u}" target="_blank" rel="noopener">${t}</a>`);
+
     function fillCard(p, touch) {
         let html = `<div class="pc-name">${esc(p.name)}</div>`;
-        if (p.note) html += `<div class="pc-note">${esc(p.note)}</div>`;
+        if (p.note) html += `<div class="pc-note">${linkify(p.note)}</div>`;
         if (p.papers.length) {
             const k = p.papers.length;
             html += `<div class="pc-papers"><div class="pc-label">${k} paper${k > 1 ? 's' : ''} together</div><ul>`;
@@ -202,6 +206,7 @@
         }
         if (touch) html += `<div class="pc-hint">Tap again to open their page →</div>`;
         card.innerHTML = html;
+        card.classList.toggle('has-link', !!card.querySelector('a'));
     }
 
     function placeCard() {
@@ -215,7 +220,19 @@
         card.style.transform = `translate(${left.toFixed(1)}px, ${top.toFixed(1)}px)`;
     }
 
+    // Cards with links stay open briefly so the pointer can reach them
+    let hideTimer = null;
+    function cancelHide() { clearTimeout(hideTimer); hideTimer = null; }
+    function softHide() {
+        cancelHide();
+        if (card.classList.contains('has-link')) hideTimer = setTimeout(deactivate, 250);
+        else deactivate();
+    }
+    card.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') cancelHide(); });
+    card.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && !drag) softHide(); });
+
     function activate(nd, touch) {
+        cancelHide();
         if (active === nd) {
             if (touch) { fillCard(nd.p, true); placeCard(); }
             return;
@@ -232,6 +249,7 @@
     }
 
     function deactivate() {
+        cancelHide();
         if (!active) return;
         if (!drag || drag.node !== active) active.pinned = false;
         active.el.classList.remove('is-active');
@@ -253,9 +271,9 @@
         const el = nd.el;
 
         el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !drag) activate(nd); });
-        el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && !drag) deactivate(); });
+        el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && !drag) softHide(); });
         el.addEventListener('focus', () => activate(nd));
-        el.addEventListener('blur', () => deactivate());
+        el.addEventListener('blur', e => { if (!card.contains(e.relatedTarget)) deactivate(); });
 
         // Dragging: mouse/pen only, so touch screens can still scroll
         el.addEventListener('pointerdown', e => {
@@ -311,7 +329,7 @@
 
     // Tap outside a face closes the card
     document.addEventListener('pointerdown', e => {
-        if (active && !e.target.closest('.person-link')) deactivate();
+        if (active && !e.target.closest('.person-link, .person-card')) deactivate();
     });
 
     // ---------- Filters (where we met) ----------

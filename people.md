@@ -12,7 +12,7 @@ title: People
 {%- for pl in all_places -%}{%- unless place_order contains pl -%}{%- assign places = places | push: pl -%}{%- endunless -%}{%- endfor %}
 
 <p class="people-intro">
-    I've been fortunate to work with and learn from many amazing mentors, collaborators and friends. Here is a pseudorandom subset, in no particular order. Hover over (or tap) someone to see who they are and how we're connected. Feel free to toss people around.
+    I've been fortunate to work with, learn from and surround myself with many amazing mentors, collaborators and friends. Here is a pseudorandom subset of people who have had a deep impact on my life, in no particular order. Hover over (or tap) someone to see who they are and how we're connected. I'm struggling to develop a coherent inclusion criterion for this page (it is currently mostly vibes-based, and includes people with some public online presence). If you think you should be on this page, please come and have a deep impact on my life!
 </p>
 
 <div class="people-filters" role="group" aria-label="Filter by where we met">
