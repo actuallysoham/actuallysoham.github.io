@@ -108,6 +108,14 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: var(--bg-hover);
+    color: var(--text-color);
 }
 
 .header {
@@ -322,22 +330,33 @@ em, strong {
 
 .news-item {
     display: flex;
-    gap: 15px;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
+    gap: 20px;
+    padding: 10px 0;
     border-bottom: 1px solid var(--border-light);
 }
 
+.news-item:last-child {
+    border-bottom: none;
+}
+
 .news-date {
-    font-size: 14px;
-    color: var(--text-secondary);
-    min-width: 100px;
+    flex-shrink: 0;
+    min-width: 72px;
+    padding-top: 1px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }
 
 .news-content {
     color: var(--text-color);
     font-size: 15px;
     line-height: 1.5;
+}
+
+.news-content p {
+    margin: 0;
 }
 
 .hidden {
@@ -388,43 +407,27 @@ em, strong {
     gap: 8px;
 }
 
-.pub-links a {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 12px;
-    margin-right: 8px;
-    border: none;
-    border-radius: 10px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 14px;
-    background: var(--bg-light);
-    box-shadow: 0 1px 3px var(--shadow-light);
-    transition: all 0.2s;
-}
-
-/* Common button styling matching navbar */
 .pub-links a, .bibtex-btn {
     display: inline-flex;
     align-items: center;
-    padding: 6px 12px;
-    margin-right: 8px;
-    background: var(--bg-light);
-    border-radius: 10px;
-    border: none;
-    font-size: 14px;
+    padding: 4px 12px;
+    margin-right: 0;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--text-secondary);
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 1px 3px var(--shadow-light);
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .pub-links a:hover, .bibtex-btn:hover {
     color: var(--text-color);
-    background: var(--bg-hover);
+    background: var(--bg-light);
+    border-color: var(--text-tertiary);
     text-decoration: none;
-    box-shadow: 0 2px 6px var(--shadow-hover);
 }
 
 /* Copy icon */
@@ -438,79 +441,224 @@ em, strong {
     flex: 1;
 }
 
-/* Navbar styles */
+/* ---------- Navbar ---------- */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: transparent;
     z-index: 1000;
+    background: var(--navbar-bg);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease, background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    border-bottom-color: var(--border-light);
 }
 
 .nav-content {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
-    height: 60px;
+    height: 56px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 8px;
+}
+
+.nav-name {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-color);
+    border-bottom: none;
+    white-space: nowrap;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav-name:hover {
+    color: var(--text-color);
+}
+
+/* On the homepage the big header already shows the name; reveal it on scroll */
+.navbar.is-home .nav-name {
+    opacity: 0;
+    transform: translateY(4px);
+    pointer-events: none;
+}
+
+.navbar.is-home.show-name .nav-name,
+.navbar.is-home.menu-open .nav-name {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
 }
 
 .nav-links {
     display: flex;
-    gap: 8px;
-    margin-left: auto;
-    padding: 8px 12px;
-    background: var(--navbar-bg);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 12px var(--shadow);
-    border-radius: 18px;
     align-items: center;
+    gap: 2px;
+    margin-left: auto;
 }
 
 .nav-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 15px;
-    padding: 4px 8px;
-    background: var(--bg-light);
-    border-radius: 10px;
-    transition: background 0.2s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    background: var(--bg-hover);
-    text-decoration: none;
-}
-
-.dark-mode-toggle {
-    background: var(--bg-light);
-    border: none;
-    border-radius: 10px;
+    position: relative;
     padding: 6px 10px;
-    cursor: pointer;
+    font-size: 15px;
+    font-weight: 450;
+    color: var(--text-secondary);
+    border-bottom: none;
+    transition: color 0.2s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 1px;
+    height: 1.5px;
+    border-radius: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-color);
+}
+
+.nav-links a.active {
+    color: var(--text-color);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+}
+
+.nav-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-    margin-left: 4px;
+    gap: 2px;
 }
 
-.dark-mode-toggle:hover {
+.dark-mode-toggle,
+.menu-toggle {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dark-mode-toggle:hover,
+.menu-toggle:hover {
     background: var(--bg-hover);
+    color: var(--text-color);
 }
 
 .theme-icon {
     font-size: 14px;
-    color: var(--text-secondary);
-    transition: color 0.2s;
+    color: inherit;
 }
 
-.dark-mode-toggle:hover .theme-icon {
-    color: var(--text-color);
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    border-radius: 1px;
+    background: var(--text-color);
+    transition: transform 0.25s ease;
+}
+
+.navbar.menu-open .menu-toggle .bar:nth-child(1) {
+    transform: translateY(3.25px) rotate(45deg);
+}
+
+.navbar.menu-open .menu-toggle .bar:nth-child(2) {
+    transform: translateY(-3.25px) rotate(-45deg);
+}
+
+:focus-visible {
+    outline: 2px solid var(--link-hover);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .nav-actions {
+        margin-left: auto;
+    }
+
+    /* Drop-down panel under the bar */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        margin: 0;
+        padding: 8px 20px 16px;
+        background: var(--bg-color);
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: 0 12px 24px -16px var(--shadow-hover);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+
+    .navbar.menu-open {
+        background: var(--bg-color);
+        border-bottom-color: var(--border-light);
+    }
+
+    .navbar.menu-open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .nav-links a {
+        padding: 12px 0;
+        font-size: 17px;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links a.active {
+        font-weight: 600;
+    }
 }
 
 /* Adjust main content to account for fixed navbar */
@@ -704,160 +852,294 @@ em, strong {
     }
 }
 
-/* People page styles */
+/* ---------- People page ---------- */
 .people-intro {
     color: var(--text-secondary);
     font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 30px;
+    line-height: 1.7;
+    margin-bottom: 16px;
 }
 
-.highlight-tag {
-    color: var(--link-hover);
+/* Filter chips: where we met */
+.people-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 18px 0 4px;
+}
+
+.pf-label {
+    margin-right: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+.pf-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.highlight-tag:hover {
-    color: #044289;
-    text-decoration: underline;
+.pf-chip:hover {
+    color: var(--text-color);
+    border-color: var(--text-tertiary);
 }
 
-.people-grid {
+.pf-chip.is-active {
+    color: var(--bg-color);
+    background: var(--text-color);
+    border-color: var(--text-color);
+}
+
+/* Fallback (no JS): a plain grid */
+.people-cloud {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 24px;
     padding: 20px 0;
 }
 
 .person-link {
+    display: block;
+    border-bottom: none;
     text-decoration: none;
-    transition: all 0.3s ease;
-    opacity: 1;
-}
-
-/* Default state - all items visible */
-.people-grid:not(.filtering) .person-link {
-    opacity: 1;
-}
-
-/* Simple hover effect - dim others when hovering any item */
-.people-grid:not(.filtering):hover .person-link {
-    opacity: 0.5;
-}
-
-.people-grid:not(.filtering):hover .person-link:hover {
-    opacity: 1;
-}
-
-/* Scale effect on hover */
-.person-link:hover .person {
-    transform: scale(1.05);
-}
-
-/* When filtering, dim unmatched items */
-.people-grid.filtering .person-link:not(.highlight) {
-    opacity: 0.2;
 }
 
 .person {
-    width: 100px;
-    height: 100px;
+    display: block;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid var(--profile-border);
-    box-shadow: 0 1px 3px var(--shadow-light);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 3px solid var(--profile-border);
+    box-shadow: 0 1px 3px var(--shadow), 0 4px 12px var(--shadow-light);
+    background: var(--bg-light);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .person img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .people-grid {
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-        gap: 20px;
-    }
-    
-    .person {
-        width: 80px;
-        height: 80px;
-    }
-}
-
-.nav-links a.active {
-    background: var(--bg-hover);
-    text-decoration: none;
-}
-
-/* Mobile menu button */
-.menu-toggle {
+.people-links,
+.person-card {
     display: none;
-    background: none;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
 }
 
-.menu-toggle .bar {
+/* Floating cloud (JS) */
+.people-cloud.is-floating {
     display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--text-color);
-    margin: 4px 0;
-    transition: 0.3s;
+    padding: 0;
+    margin: 8px 0 12px;
+    touch-action: pan-y;
 }
 
-/* Responsive navbar */
+.is-floating .person-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--size);
+    height: var(--size);
+    z-index: 1;
+    opacity: 0;
+    cursor: grab;
+    will-change: transform;
+    transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
+.is-floating.is-ready .person-link {
+    opacity: 1;
+}
+
+.is-floating.is-dragging,
+.is-floating.is-dragging .person-link {
+    cursor: grabbing;
+}
+
+.is-floating .person {
+    width: 100%;
+    height: 100%;
+}
+
+.is-floating .person-link:hover .person,
+.is-floating .person-link.is-active .person,
+.is-floating .person-link:focus-visible .person {
+    transform: scale(1.12);
+    box-shadow: 0 2px 6px var(--shadow), 0 10px 24px var(--shadow-hover);
+}
+
+.is-floating .person-link.is-active {
+    z-index: 3;
+}
+
+.is-floating .person-link:focus-visible {
+    outline: none;
+}
+
+.is-floating .person-link:focus-visible .person {
+    border-color: var(--link-hover);
+}
+
+/* Someone is hovered: their co-authors stay bright, everyone else recedes */
+.is-floating.has-active .person-link:not(.is-active):not(.is-linked) {
+    opacity: 0.3;
+}
+
+.is-floating .person-link.is-linked {
+    z-index: 2;
+}
+
+.is-floating .person-link.is-linked .person {
+    border-color: var(--link-hover);
+}
+
+/* Filtering by tag */
+.is-floating.is-filtering .person-link:not(.is-match) {
+    opacity: 0.22;
+    filter: grayscale(1);
+}
+
+.is-floating.has-active.is-filtering .person-link.is-linked:not(.is-match) {
+    opacity: 0.5;
+}
+
+.is-floating .people-links {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.people-links line {
+    stroke: var(--link-hover);
+    stroke-linecap: round;
+    opacity: 0.45;
+}
+
+/* Hover card */
+.is-floating .person-card {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: max-content;
+    max-width: min(280px, 100%);
+    padding: 10px 14px 11px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px var(--shadow-light), 0 12px 32px var(--shadow-hover);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.is-floating .person-card[hidden] {
+    display: none;
+}
+
+.pc-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.pc-note {
+    margin-top: 6px;
+    color: var(--text-color);
+}
+
+.pc-papers {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-light);
+}
+
+.pc-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+.pc-papers ul {
+    margin: 3px 0 0;
+    padding-left: 14px;
+}
+
+.pc-papers li {
+    margin: 1px 0;
+}
+
+.pc-papers li span {
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+}
+
+.pc-papers li.pc-more {
+    list-style: none;
+    margin-left: -14px;
+    color: var(--text-tertiary);
+}
+
+.pc-hint {
+    margin-top: 8px;
+    padding-top: 7px;
+    border-top: 1px solid var(--border-light);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--link-hover);
+}
+
+.pc-linked {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
 @media (max-width: 600px) {
-    .menu-toggle {
-        display: block;
+    .people-cloud {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 16px;
     }
 
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 20px;
-        right: 20px;
-        flex-direction: column;
-        background: var(--navbar-bg);
-        backdrop-filter: blur(5px);
-        padding: 20px;
-        gap: 15px;
-        border-radius: 18px;
-        box-shadow: 0 4px 12px var(--shadow-hover);
-        margin-left: 0;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    /* Animate hamburger to X */
-    .menu-toggle.active .bar:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.active .bar:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
+    .person {
+        width: 70px;
+        height: 70px;
+        border-width: 2px;
     }
 }
 
 /* Special cases where we don't want borders */
-.nav-links a,
 .social-links a,
-.pub-links a,
-.pub-thumbnail a,
-.person-link {
+.pub-thumbnail a {
     border-bottom: none;
 }
 
@@ -1126,43 +1408,39 @@ em, strong {
     margin-top: 2px;
 }
 
-/* Tab styles */
+/* Tab styles: a quiet segmented control */
 .tab-container {
-    display: flex;
-    gap: 8px;
+    display: inline-flex;
+    gap: 2px;
     margin-bottom: 30px;
-    padding: 8px 12px;
-    background: var(--navbar-bg);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 12px var(--shadow);
-    border-radius: 18px;
+    padding: 3px;
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
     width: fit-content;
 }
 
 .tab-button {
     border: none;
-    border-radius: 10px;
-    background: var(--bg-light);
-    padding: 4px 16px;
-    font-size: 15px;
+    border-radius: 7px;
+    background: transparent;
+    padding: 5px 16px;
+    font: inherit;
+    font-size: 14px;
     color: var(--text-secondary);
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 1px 3px var(--shadow-light);
+    transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tab-button:hover {
     color: var(--text-color);
-    background: var(--bg-hover);
-    box-shadow: 0 2px 6px var(--shadow-hover);
 }
 
 .tab-button.active {
     color: var(--text-color);
-    font-weight: 600;
-    background: var(--bg-hover);
-    position: relative;
-    z-index: 1;
+    font-weight: 500;
+    background: var(--bg-color);
+    box-shadow: 0 1px 2px var(--shadow), 0 0 0 1px var(--border-light);
 }
 
 .tab-content {
@@ -1897,3 +2175,35 @@ a[href="/cv.pdf"],
         right: 6px;
     }
 } 
+
+/* ---------- Shortened author lists ---------- */
+.authors-toggle {
+    display: inline;
+    margin: 0 0 0 2px;
+    padding: 0 6px;
+    font: inherit;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.authors-toggle:hover {
+    color: var(--text-color);
+    border-color: var(--text-tertiary);
+}
+
+@media (max-width: 600px) {
+    .news-item {
+        gap: 12px;
+    }
+
+    .news-date {
+        min-width: 62px;
+    }
+}

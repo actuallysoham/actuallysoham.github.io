@@ -8,12 +8,12 @@
     ];
 
     function getTheme() {
-        return localStorage.getItem('theme') || 'light';
+        return document.documentElement.getAttribute('data-theme') || 'light';
     }
 
     function setTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+        try { localStorage.setItem('theme', theme); } catch (e) {}
         updateIcon(theme);
     }
 
@@ -31,10 +31,12 @@
         setTheme(next.name);
     }
 
+    // Only sync the icon on load; the theme itself is set in <head>, and is
+    // persisted only when the visitor explicitly picks one.
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => setTheme(getTheme()));
+        document.addEventListener('DOMContentLoaded', () => updateIcon(getTheme()));
     } else {
-        setTheme(getTheme());
+        updateIcon(getTheme());
     }
 
     document.addEventListener('DOMContentLoaded', function() {

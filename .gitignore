@@ -1,2 +1,7 @@
 # macOS system files
 .DS_Store
+
+# Jekyll build output (GitHub Pages builds the site itself)
+_site/
+.jekyll-cache/
+.sass-cache/

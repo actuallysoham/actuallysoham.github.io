@@ -3,38 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.title }}</title>
+    {% seo %}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="data:,">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <script>
         // Prevent flash of unstyled content - set theme immediately
         (function() {
-            const theme = localStorage.getItem('theme') || 'light';
+            let theme = null;
+            try { theme = localStorage.getItem('theme'); } catch (e) {}
+            if (!theme) {
+                theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-content">
-            <button class="menu-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <div class="nav-links">
-                <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a>
-                <a href="/research" {% if page.url contains "research" %}class="active"{% endif %}>Research</a>
-                <a href="/blog" {% if page.url contains "blog" %}class="active"{% endif %}>Non-Research</a>
-                <a href="/people" {% if page.url contains "people" %}class="active"{% endif %}>People</a>
-                <a href="/gallery" {% if page.url contains "gallery" %}class="active"{% endif %}>Gallery</a>
-                <button class="dark-mode-toggle" aria-label="Toggle theme">
+    <header class="navbar{% if page.url == "/" %} is-home{% endif %}">
+        <nav class="nav-content" aria-label="Main">
+            <a href="/" class="nav-name">Soham De</a>
+            <div class="nav-links" id="nav-links">
+                <a href="/research" {% if page.url contains "research" %}class="active" aria-current="page"{% endif %}>Research</a>
+                <a href="/blog" {% if page.url contains "blog" %}class="active" aria-current="page"{% endif %}>Non-Research</a>
+                <a href="/people" {% if page.url contains "people" %}class="active" aria-current="page"{% endif %}>People</a>
+                <a href="/gallery" {% if page.url contains "gallery" %}class="active" aria-current="page"{% endif %}>Gallery</a>
+            </div>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" aria-label="Change theme" title="Change theme">
                     <i class="theme-icon fa-solid fa-sun"></i>
                 </button>
+                <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <div class="content">
         {% if page.url == "/" %}
@@ -76,23 +82,38 @@
     </div>
 
     <script>
-        // Show/hide name in navbar on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.nav-name');
-            if (window.scrollY > 100) {
-                navbar.classList.add('visible');
-            } else {
-                navbar.classList.remove('visible');
-            }
-        });
-    </script>
+        (function() {
+            const navbar = document.querySelector('.navbar');
+            const header = document.querySelector('.header');
+            const toggle = document.querySelector('.menu-toggle');
+            const links = document.getElementById('nav-links');
 
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-            this.classList.toggle('active');
-        });
+            // Hairline under the navbar once the page scrolls; on the homepage,
+            // reveal the name once the profile header has scrolled away.
+            function onScroll() {
+                navbar.classList.toggle('scrolled', window.scrollY > 4);
+                if (header) {
+                    navbar.classList.toggle('show-name', header.getBoundingClientRect().bottom < 60);
+                }
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Mobile menu
+            function setMenu(open) {
+                navbar.classList.toggle('menu-open', open);
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            }
+            toggle.addEventListener('click', function() {
+                setMenu(!navbar.classList.contains('menu-open'));
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.closest('a')) setMenu(false);
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') setMenu(false);
+            });
+        })();
     </script>
 
     <script src="/assets/js/dark-mode.js"></script>

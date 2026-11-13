@@ -1,5 +1,6 @@
 title: Soham De
-description: PhD student at University of Washington
+tagline: PhD candidate at UW
+description: PhD candidate at the University of Washington studying computational social science.
 previous: Microsft Research, Ashoka University
 email: sohamde@uw.edu
 twitter_username: actuallysoham
@@ -7,6 +8,7 @@ github_username: actuallysoham
 linkedin_username: actuallysoham
 bluesky_username: sohamde.in
 scholar_username: i1ad6GmN4uoC
+url: "https://sohamde.in"
 
 # Build settings
 markdown: kramdown
@@ -17,4 +19,4 @@ plugins:
 collections:
   papers:
     output: true
-    permalink: /papers/:path/ 
+    permalink: /papers/:path/

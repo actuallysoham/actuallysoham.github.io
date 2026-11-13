@@ -18,18 +18,7 @@ If you're interested in my research (and even if you aren't) let's chat 💬, ge
     </div>
     <div class="pub-content">
         <h3>{{ pub.title }}</h3>
-        <p class="authors">
-            {% for author in pub.authors %}
-                {%- if forloop.last %} and {% endif %}
-                {%- if author == "Soham De" -%}
-                    <strong>{{ author }}</strong>
-                {%- else -%}
-                    {{ author }}
-                {%- endif -%}
-                {%- unless forloop.last %}, {% endunless %}
-            {%- endfor %}
-            {%- if pub.equal_contribution %} ‡{% endif %}
-        </p>
+        <p class="authors">{% include authors.html pub=pub %}</p>
         <p class="venue"><em>{{ pub.venue }}. {{ pub.year }}</em></p>
         <div class="pub-links">
             {% if pub.links.abstract %}<a href="{{ pub.links.abstract }}">Abstract</a>{% endif %}
@@ -46,9 +35,10 @@ If you're interested in my research (and even if you aren't) let's chat 💬, ge
 ## Recent News <a href="/news" class="link-button">View all</a>
 
 <div class="news-list">
-    {% for item in site.data.news limit:3 %}
+    {% assign news_sorted = site.data.news | sort: "date" | reverse %}
+    {% for item in news_sorted limit:3 %}
         <div class="news-item">
-            <div class="news-date">{{ item.date | date: "%Y-%m-%d" }}</div>
+            <div class="news-date">{{ item.date | date: "%b %Y" }}</div>
             <div class="news-content">{{ item.content | markdownify }}</div>
         </div>
     {% endfor %}

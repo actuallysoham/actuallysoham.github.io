@@ -1,0 +1,41 @@
+{%- comment -%}
+  Renders a publication's author list.
+  Usage: {% include authors.html pub=pub %}
+  Lists longer than `max` are shortened to the first few authors, Soham (if
+  hidden), and the last author, with a button that expands the full list.
+{%- endcomment -%}
+{%- assign authors = include.pub.authors -%}
+{%- assign n = authors | size -%}
+{%- assign max = 8 -%}
+{%- assign lead = 3 -%}
+
+{%- capture full -%}
+{%- for author in authors -%}
+    {%- if forloop.last and n > 1 %} and {% endif -%}
+    {%- if author == "Soham De" -%}<strong>{{ author }}</strong>{%- else -%}{{ author }}{%- endif -%}
+    {%- unless forloop.last -%}{%- if n > 2 -%}, {% endif -%}{%- endunless -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+{%- if n > max -%}
+    {%- assign last_i = n | minus: 1 -%}
+    {%- assign me = -1 -%}
+    {%- for author in authors -%}{%- if author == "Soham De" -%}{%- assign me = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+    {%- assign shown = lead | plus: 1 -%}
+    {%- capture short -%}
+        {%- for author in authors limit: lead -%}
+            {%- if author == "Soham De" -%}<strong>{{ author }}</strong>{%- else -%}{{ author }}{%- endif -%},{{ " " }}
+        {%- endfor -%}
+        …,{{ " " }}
+        {%- if me >= lead and me < last_i -%}
+            {%- assign shown = shown | plus: 1 -%}
+            <strong>Soham De</strong>, …,{{ " " }}
+        {%- endif -%}
+        and {% if authors[last_i] == "Soham De" %}<strong>Soham De</strong>{% else %}{{ authors[last_i] }}{% endif %}
+    {%- endcapture -%}
+    {%- assign hidden_count = n | minus: shown -%}
+    <span class="authors-short">{{ short }} <button type="button" class="authors-toggle" aria-label="Show all {{ n }} authors">+{{ hidden_count }} more</button></span><span class="authors-full" hidden>{{ full }}</span>
+{%- else -%}
+    {{ full }}
+{%- endif -%}
+{%- if include.pub.equal_contribution %} ‡{% endif -%}

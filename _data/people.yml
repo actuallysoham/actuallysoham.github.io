@@ -1,0 +1,259 @@
+# People shown on /people. Order does not matter: they float around.
+# met: where we met; becomes the filter on the page (see people.md for the order)
+# note: optional one-liner shown on hover. Shared papers are found
+#       automatically from _data/publications.yml by author name;
+#       add `aliases` if your name for someone differs from the paper.
+
+- name: Tanvi Roy
+  url: "https://www.linkedin.com/in/tanviroy/"
+  img: tanvi.jpeg
+  met: Ashoka
+
+  note: "My partner, and primary collaborator in all life outside the academy"
+
+- name: Dhruv Agarwal
+  url: "https://agdhruv.github.io/"
+  img: dhruv.jpeg
+  met: Ashoka
+
+  note: "I've followed in his footsteps ever since our Ashoka days"
+
+- name: Debayan Gupta
+  url: "https://debayangupta.com/"
+  img: debg.jpg
+  met: Ashoka
+
+  note: "The first person to introduce me to research"
+
+- name: Soham Bagchi
+  url: "https://www.sohambagchi.com/"
+  img: soba.jpeg
+  met: Ashoka
+
+  note: "Fellow namesake; we applied to PhDs together"
+
+- name: Mahavir Jhawar
+  url: "https://sites.google.com/site/homeofmahavir/Home"
+  img: jhawar.jpg
+  met: Ashoka
+
+  note: "Mentored my early PPML research and recommended me for my PhD applications"
+
+- name: Anirban Mondal
+  url: "https://scholar.google.co.in/citations?user=WGjWgoEAAAAJ&hl=en"
+  img: anirbanmondal.png
+  met: Ashoka
+  note: "The first person to ever tell me to apply to PhD programs"
+
+
+- name: Joyojeet Pal
+  url: "https://joyojeet.people.si.umich.edu/"
+  img: joyopal.jpg
+  met: Microsoft
+
+  note: "Introduced me to HCI and social computing, and the main reason I am pursuing research as a career"
+
+- name: Arshia Arya
+  url: "https://arshiaarya.github.io/"
+  img: arshia.jpeg
+  met: Microsoft
+
+  note: "My first friend at Microsoft Research; we also applied to PhDs together"
+
+- name: Agrima Seth
+  url: "https://agrimaseth.github.io/"
+  img: agrima.jpeg
+  met: Microsoft
+
+  note: "Collaborator on my first publication!"
+
+- name: Anmol Panda
+  url: "https://anmolpanda.github.io/"
+  img: anmol.jpeg
+  met: Microsoft
+
+
+- name: Saloni Dash
+  url: "https://scholar.google.com/citations?user=5-Fyc8MAAAAJ&hl=en"
+  img: saloni.webp
+  met: Microsoft
+
+  note: "We both started in PPML, moved to social computing, and ended up in the same PhD program!"
+
+- name: Anirban Sen
+  url: "https://scholar.google.co.in/citations?user=xTlFkqAAAAAJ&hl=en"
+  img: anirbansen.jpeg
+  met: Microsoft
+  note: "Mentor at Microsoft Research, who eventually joined Ashoka as faculty"
+
+
+- name: Sukhnidh Kaur
+  url: "https://www.instagram.com/pavemented/"
+  img: sukhnidh.jpeg
+  met: Microsoft
+
+  note: "Influencer friend, who taught me qualitative research"
+
+- name: Dibyendu Mishra
+  url: "https://dibyendumishra.github.io/"
+  img: dibyendu.jpeg
+  met: Microsoft
+
+  note: "Senior at Ashoka, who also introduced me to Joyojeet"
+
+- name: Sudheendra Hangal
+  url: "https://xenon.stanford.edu/~hangal/"
+  img: hangal.png
+  met: Ashoka
+
+  note: "Helped me choose between PhD programs, and gave great advice"
+
+- name: Zainab Akbar
+  url: "https://scholar.google.com/citations?user=NXFwzv0AAAAJ&hl=en"
+  img: zainab.jpeg
+  met: Microsoft
+
+
+- name: Martin Saveski
+  url: "http://www.martinsaveski.com/"
+  img: martin.jpeg
+  met: UW
+
+  note: "Best PhD advisor in the world (imho), who taught me everything about the research I do now"
+
+- name: Shahan Ali Memon
+  url: "https://samemon.github.io/"
+  img: shahan.jpeg
+  met: UW
+
+  note: "Might turn me into a LinkedIn bro someday"
+
+- name: Michiel Bakker
+  url: "https://twitter.com/bakkermichiel"
+  img: bakker.jpeg
+  met: Elsewhere
+
+  note: "Long-term collaborator, who taught me a lot about LLMs"
+
+- name: Jay Baxter
+  url: "http://jaybaxter.net/"
+  img: jay.jpeg
+  met: Elsewhere
+
+  note: "Collaborator at Community Notes"
+
+- name: Kayla Duskin
+  url: "https://ischool.uw.edu/people/phd/profile/kduskin"
+  img: kayla.jpeg
+  met: UW
+
+  note: "Same ideas in research, same taste in ice cream, and 100% inter-annotator agreement"
+
+- name: Sydney DeMets
+  url: "https://sydneydemets.github.io/"
+  img: sydney.jpeg
+  met: UW
+
+  note: "Taught me the subtle art of sneaking out of a talk after the free lunch"
+
+- name: Anuj Sinha
+  url: "https://www.linkedin.com/in/anujsinha3/"
+  img: anuj.jpeg
+  met: UW
+
+  note: "The first master's student I mentored"
+
+- name: Aylin Caliskan
+  url: "https://faculty.washington.edu/aylin/"
+  img: aylin.jpeg
+  met: UW
+
+  note: "On my PhD committee"
+
+- name: Hongfan Lu
+  url: "https://www.linkedin.com/in/hongfanlouiselu/"
+  img: hongfan.jpeg
+  met: UW
+
+  note: "A mentee of mine"
+
+- name: Emma Spiro
+  url: "https://faculty.washington.edu/espiro/"
+  img: emma.jpeg
+  met: UW
+
+  note: "On my PhD committee"
+
+- name: Luke Thorburn
+  url: "https://lukethorburn.com/"
+  img: luke.jpeg
+  met: Elsewhere
+
+  note: "We built an award-winning feed reranker together"
+
+- name: Haiwen Li
+  url: "https://haiwenli.dev/"
+  img: haiwen.jpeg
+  met: Elsewhere
+
+  note: "We wrote many papers on Community Notes together"
+
+- name: Smitha Milli
+  url: "https://smithamilli.com/"
+  img: smitha.jpeg
+  met: Meta
+
+  note: "My fantastic mentor at Meta"
+
+- name: Max Nickel
+  url: "https://maxn.io/"
+  img: max.jpg
+  met: Meta
+
+  note: "My mentor and skip-manager at Meta"
+
+- name: Manon Revel
+  url: "https://manrev.github.io/manon/"
+  img: manon.jpg
+  met: Meta
+
+
+- name: Ashish Goel
+  url: "https://web.stanford.edu/~ashishg/ashishg.html"
+  img: ashishgoel.jpg
+  met: Elsewhere
+
+  note: "Collaborator on my Meta work"
+
+- name: Ariel Procaccia
+  url: "https://procaccia.info/"
+  img: procaccia.jpg
+  met: Meta
+
+  note: "Collaborator on my work at Meta"
+
+- name: Isaac Slaughter
+  url: "https://www.slaughter.page/"
+  img: isaac.jpeg
+  met: UW
+
+  note: "We both work on Community Notes in Martin's lab"
+
+- name: Ceren Budak
+  url: "https://cbudak.com/"
+  img: ceren.jpeg
+  met: Elsewhere
+
+  note: "Collaborator on several projects using the Prosocial Ranking Challenge data"
+
+- name: Tiziano Piccardi
+  url: "https://piccardi.me/"
+  img: tiziano.jpg
+  met: Elsewhere
+
+
+- name: Brad Miller
+  url: "https://bradmiller.github.io/"
+  img: brad.jpeg
+  met: Elsewhere
+  note: "Collaborator at Community Notes"

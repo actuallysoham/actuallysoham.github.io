@@ -41,18 +41,7 @@ Most recent publications on <a href="https://scholar.google.com/citations?user=i
             </div>
             <div class="pub-content">
                 <h3>{{ pub.title }}</h3>
-                <p class="authors">
-                    {% for author in pub.authors %}
-                        {%- if forloop.last %} and {% endif %}
-                        {%- if author == "Soham De" -%}
-                            <strong>{{ author }}</strong>
-                        {%- else -%}
-                            {{ author }}
-                        {%- endif -%}
-                        {%- unless forloop.last %}, {% endunless %}
-                    {%- endfor %}
-                    {%- if pub.equal_contribution %} ‡{% endif %}
-                </p>
+                <p class="authors">{% include authors.html pub=pub %}</p>
                 <p class="venue"><em>{{ pub.venue }}. {{ pub.year }}</em></p>
                 <div class="pub-links">
                     {% if pub.links.abstract %}<a href="{{ pub.links.abstract }}">Abstract</a>{% endif %}
@@ -78,18 +67,7 @@ Most recent publications on <a href="https://scholar.google.com/citations?user=i
             </div>
             <div class="pub-content">
                 <h3>{{ pub.title }}</h3>
-                <p class="authors">
-                    {% for author in pub.authors %}
-                        {%- if forloop.last %} and {% endif %}
-                        {%- if author == "Soham De" -%}
-                            <strong>{{ author }}</strong>
-                        {%- else -%}
-                            {{ author }}
-                        {%- endif -%}
-                        {%- unless forloop.last %}, {% endunless %}
-                    {%- endfor %}
-                    {%- if pub.equal_contribution %} ‡{% endif %}
-                </p>
+                <p class="authors">{% include authors.html pub=pub %}</p>
                 <p class="venue"><em>{{ pub.venue }}. {{ pub.year }}</em></p>
                 <div class="pub-links">
                     {% if pub.links.abstract %}<a href="{{ pub.links.abstract }}">Abstract</a>{% endif %}

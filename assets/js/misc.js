@@ -33,3 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 }); 
+// Expand shortened author lists
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.authors-toggle');
+    if (!btn) return;
+    const p = btn.closest('.authors');
+    p.querySelector('.authors-short').hidden = true;
+    p.querySelector('.authors-full').hidden = false;
+});

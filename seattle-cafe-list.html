@@ -12,38 +12,41 @@
         crossorigin=""
     >
     <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="data:,">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <script>
         // Prevent flash of unstyled content - set theme immediately
         (function() {
-            const theme = localStorage.getItem('theme') || 'light';
+            let theme = null;
+            try { theme = localStorage.getItem('theme'); } catch (e) {}
+            if (!theme) {
+                theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-content">
-            <button class="menu-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <div class="nav-links">
-                <a href="/" >Home</a>
-                <a href="/research" >Research</a>
-                <a href="/blog" class="active">Non-Research</a>
-                <a href="/people" >People</a>
-                <a href="/gallery" >Gallery</a>
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <svg class="dark-mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path class="sun-icon" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-                        <path class="moon-icon" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" style="display: none;"/>
-                    </svg>
+    <header class="navbar">
+        <nav class="nav-content" aria-label="Main">
+            <a href="/" class="nav-name">Soham De</a>
+            <div class="nav-links" id="nav-links">
+                <a href="/research">Research</a>
+                <a href="/blog" class="active" aria-current="page">Non-Research</a>
+                <a href="/people">People</a>
+                <a href="/gallery">Gallery</a>
+            </div>
+            <div class="nav-actions">
+                <button class="dark-mode-toggle" aria-label="Change theme" title="Change theme">
+                    <i class="theme-icon fa-solid fa-sun"></i>
+                </button>
+                <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <div class="content cafe-page">
 
@@ -162,23 +165,38 @@
     </div>
 
     <script>
-        // Show/hide name in navbar on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.nav-name');
-            if (window.scrollY > 100) {
-                navbar.classList.add('visible');
-            } else {
-                navbar.classList.remove('visible');
-            }
-        });
-    </script>
+        (function() {
+            const navbar = document.querySelector('.navbar');
+            const header = document.querySelector('.header');
+            const toggle = document.querySelector('.menu-toggle');
+            const links = document.getElementById('nav-links');
 
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-            this.classList.toggle('active');
-        });
+            // Hairline under the navbar once the page scrolls; on the homepage,
+            // reveal the name once the profile header has scrolled away.
+            function onScroll() {
+                navbar.classList.toggle('scrolled', window.scrollY > 4);
+                if (header) {
+                    navbar.classList.toggle('show-name', header.getBoundingClientRect().bottom < 60);
+                }
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Mobile menu
+            function setMenu(open) {
+                navbar.classList.toggle('menu-open', open);
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            }
+            toggle.addEventListener('click', function() {
+                setMenu(!navbar.classList.contains('menu-open'));
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.closest('a')) setMenu(false);
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') setMenu(false);
+            });
+        })();
     </script>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
